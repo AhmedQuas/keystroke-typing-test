@@ -3,8 +3,15 @@ const nextButton = document.getElementById('next-button');
 const userInput = document.getElementById('user-input');
 const sentenceBox = document.getElementById('sentence');
 
-if (!(acceptButton && nextButton && userInput && sentenceBox)){
-    console.warn('Some of the required items are missing')
+const surveySection = document.getElementById('survey-section');
+const typingSection = document.getElementById('typing-section');
+const statsSection = document.getElementById('stats-section');
+
+check = [acceptButton, nextButton, userInput, sentenceBox,
+        surveySection, typingSection, statsSection];
+
+if (check.includes(null)){
+    console.error('Some of the required items are missing')
 }
 else{
     acceptButton.addEventListener('click', acceptButtonClick);
@@ -13,17 +20,11 @@ else{
     userInput.onkeydown = userInput.onkeyup = keyStrokeAnalyzer;
 }
 
-
 buttons = [];
-sentences = [
-    'Daj, ać ja pobruszę, a ty poczywaj.',
-    'Sample 2 sentence',
-    'Sample 3 sentence',
-    'Sample 4 sentence',
-    'Sample 5 sentence'
-    ];
 sentenceKeystrokes = [];
 globalKeystrokes = [];
+getSentences();
+
 
 function acceptButtonClick(e){
     buttons.push({
@@ -31,6 +32,10 @@ function acceptButtonClick(e){
         timestamp:e.timeStamp
     });
     sentenceBox.innerHTML = sentences[0];
+    
+    //Hide & show sections
+    surveySection.classList.add('d-none');
+    typingSection.classList.remove('d-none');
 }
 
 function nextButtonClick(e){
@@ -45,11 +50,16 @@ function nextButtonClick(e){
     sentenceKeystrokes = [];
 
     if (len == sentences.length){
-        // send data, end test and show statistics
+        
+        //Hide & show sections
+        typingSection.classList.add('d-none');
+        statsSection.classList.remove('d-none');
+        
+        // Send data, end test and show statistics
         alert('Test finished');
     }
     else{
-        // provide next sentence
+        // Provide next sentence
         sentenceBox.innerHTML = sentences[len];
     }
 }
@@ -73,3 +83,16 @@ function keyStrokeAnalyzer(e){
         }
     }
 }
+
+async function getSentences(){
+    try{
+     const { data } = await axios({
+         method: 'get',
+         url: 'http://localhost:80/sentences'
+     })
+     sentences = data.sentences;
+    }
+    catch{
+        console.error('Error occured during getting data from /sentences');
+    }
+ }
