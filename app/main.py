@@ -3,15 +3,24 @@ from fastapi import FastAPI
 #API documentation is accessible by /doc or /redoc path
 app = FastAPI()
 
-@app.get('/statistics')
-def show_statistics():
-    return {'status':'statistics ok'}
-
 @app.post('/survey')
 def survey():
     return {'status':'survey ok'}
 
+@app.get('/test-data')
+def get_test_data():
+    return {'sentences': {
+        'Sample 1 sentence',
+        'Sample 2 sentence',
+        'Sample 3 sentence',
+        'Sample 4 sentence',
+        'Sample 5 sentence'
+        }}
 
 @app.post('/test-data')
 def test_data():
     return {'status': 'test-data ok'}
+
+@app.get('/statistics')
+def show_statistics():
+    return {'status':'statistics ok'}

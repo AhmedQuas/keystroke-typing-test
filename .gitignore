@@ -1,3 +1,4 @@
 .vscode/*
 db/*
 app/__pycache__/*
+.env
