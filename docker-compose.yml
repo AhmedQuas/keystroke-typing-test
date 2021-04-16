@@ -1,0 +1,26 @@
+version: '3.1'
+
+services:
+
+  python-fastapi:
+    build: .
+    ports:
+      - 80:80
+    volumes:
+      - ./app:/app
+
+  mariadb:
+    image: mariadb:${MARIADB_VERSION}
+    restart: always
+    environment:
+      MYSQL_DATABASE: ${DATABASE}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${PASSWD}
+      MYSQL_RANDOM_ROOT_PASSWORD: 1
+    ports:
+      - 3306:3306
+    volumes:
+      - ./db:/var/lib/mysql
+
+volumes:
+  mariadb:
