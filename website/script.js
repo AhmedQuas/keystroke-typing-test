@@ -37,7 +37,8 @@ function acceptButtonClick(e){
     });
     sentenceBox.innerHTML = sentences[0];
     
-    //Hide & show sections
+    //Send survey, hide & show sections
+    sendSurvey();
     surveySection.classList.add('d-none');
     typingSection.classList.remove('d-none');
 }
@@ -86,6 +87,23 @@ function keyStrokeAnalyzer(e){
             if (sentenceKeystrokes[i].key == e.key && sentenceKeystrokes[i].upTimeStamp == 0)
                 sentenceKeystrokes[i].upTimeStamp = e.timeStamp;
         }
+    }
+}
+
+async function sendSurvey(){
+    survey = {
+        q1: 'ans1',
+        q2: 'ans2'
+    }
+    try{
+        const { data, status } = await request.post('/survey', survey);
+
+        if (status !== 201){
+            console.error('None 201 response code');    
+        }
+    }
+    catch(error){
+        console.error('Error occured during sending test data to /test-data');
     }
 }
 

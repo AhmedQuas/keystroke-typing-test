@@ -7,10 +7,6 @@ from . import controller
 #API documentation is accessible by /doc or /redoc path
 app = FastAPI()
 
-@app.post('/survey')
-def survey():
-    return {'status':'survey ok'}
-
 origins = ['*']
 
 app.add_middleware(
@@ -20,6 +16,11 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+@app.post('/survey', status_code = status.HTTP_201_CREATED)
+def survey(request: schemas.survey):
+    controller.add_survey(request)
+    return {'status': 'test-data ok'}
 
 @app.get('/sentences')
 def get_test_data():
