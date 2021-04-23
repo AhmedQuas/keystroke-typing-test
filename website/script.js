@@ -7,6 +7,10 @@ const surveySection = document.getElementById('survey-section');
 const typingSection = document.getElementById('typing-section');
 const statsSection = document.getElementById('stats-section');
 
+const request = axios.create({
+    baseURL: 'http://localhost:80'
+})
+
 check = [acceptButton, nextButton, userInput, sentenceBox,
         surveySection, typingSection, statsSection];
 
@@ -56,6 +60,7 @@ function nextButtonClick(e){
         statsSection.classList.remove('d-none');
         
         // Send data, end test and show statistics
+        sendTestData();
         alert('Test finished');
     }
     else{
@@ -86,13 +91,24 @@ function keyStrokeAnalyzer(e){
 
 async function getSentences(){
     try{
-     const { data } = await axios({
-         method: 'get',
-         url: 'http://localhost:80/sentences'
-     })
+     const { data } = await request.get('/sentences')
+
      sentences = data.sentences;
     }
     catch{
         console.error('Error occured during getting data from /sentences');
     }
  }
+
+async function sendTestData(){
+    try{
+        const { data, status } = await request.post('/test-data', globalKeystrokes);
+
+        if (status !== 201){
+            console.error('None 201 response code');    
+        }
+    }
+    catch(error){
+        console.error('Error occured during sending test data to /test-data');
+    }
+}

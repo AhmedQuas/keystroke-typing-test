@@ -1,5 +1,8 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, status
+from typing import List
 from fastapi.middleware.cors import CORSMiddleware
+from . import schemas
+from . import controller
 
 #API documentation is accessible by /doc or /redoc path
 app = FastAPI()
@@ -28,8 +31,9 @@ def get_test_data():
         'Sample 5 sentence',
     ]}
 
-@app.post('/test-data')
-def test_data():
+@app.post('/test-data', status_code = status.HTTP_201_CREATED)
+def test_data(request: List[List[schemas.test_data]]):
+    controller.add_test_data(request)
     return {'status': 'test-data ok'}
 
 @app.get('/statistics')
