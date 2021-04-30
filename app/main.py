@@ -31,11 +31,11 @@ def survey(request: schemas.survey, db: Session = Depends(get_db)):
 @app.get('/sentences')
 def get_test_data():
     return {'sentences': [
-        'Sample 1 sentence',
-        'Sample 2 sentence',
-        'Sample 3 sentence',
-        'Sample 4 sentence',
-        'Sample 5 sentence',
+        'Zamieszaj ciasto i małą chochlą odmierz porcję na naleśnika.',
+        'Wylej na patelnię tylko tyle ciasta, by masa przykryła powierzchnię patelni.',
+        'Przy każdym nalewaniu porcji na naleśnika podnoszę patelnię nad palnik.',
+        'Od razu poruszam patelnią tak, by ciasto rozeszło się po całej powierzchni',
+        'Naleśniki powinny być cienkie i smaczne',
     ]}
 
 @app.post('/test-data', status_code = status.HTTP_201_CREATED)

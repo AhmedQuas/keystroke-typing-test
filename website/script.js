@@ -3,6 +3,7 @@ const acceptSurveyButton = document.getElementById('accept-survey-button');
 const nextButton = document.getElementById('next-button');
 const userInput = document.getElementById('user-input');
 const sentenceBox = document.getElementById('sentence');
+const progressBar = document.getElementById('progress-bar');
 
 const introSection = document.getElementById('intro-section');
 const surveySection = document.getElementById('survey-section'); 
@@ -13,7 +14,7 @@ const request = axios.create({
     baseURL: 'http://localhost:80'
 })
 
-check = [acceptIntroButton, acceptSurveyButton, nextButton, userInput, sentenceBox,
+check = [acceptIntroButton, acceptSurveyButton, nextButton, userInput, sentenceBox, progressBar,
         introSection, surveySection, typingSection, statsSection];
 
 if (check.includes(null)){
@@ -50,10 +51,12 @@ function acceptSurveyButtonClick(e){
         timestamp:e.timeStamp
     });
     sentenceBox.innerHTML = sentences[0];
+    progressBar.innerHTML = "1/" + sentences.length; 
     
     //Hide & show sections
     surveySection.classList.add('d-none');
     typingSection.classList.remove('d-none');
+    setResponseUserInputWidth();
 }
 
 function nextButtonClick(e){
@@ -81,6 +84,8 @@ function nextButtonClick(e){
     else{
         // Provide next sentence
         sentenceBox.innerHTML = sentences[len];
+        progressBar.innerHTML = len + 1 + "/" + sentences.length;
+        setResponseUserInputWidth();
     }
 }
 
@@ -143,4 +148,8 @@ async function sendTestData(){
     catch(error){
         console.error('Error occured during sending test data to /test-data');
     }
+}
+
+function setResponseUserInputWidth(){
+    userInput.style.width = sentenceBox.offsetWidth + 20 + "px";
 }
