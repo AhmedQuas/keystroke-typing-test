@@ -13,5 +13,10 @@ class keystroke(BaseModel):
             sort_keys=True, indent=0)
 
 class survey(BaseModel):
-    q1: str
-    q2: str
+    age: int
+    isPolishNative: bool
+    sex: bool
+    handPreference: bool
+    education: int
+    employment: int
+    likeScience: bool

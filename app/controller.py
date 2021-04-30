@@ -7,7 +7,14 @@ def add_survey(request: schemas.survey, db: Session):
     """
         App logic for /survey endpoint
     """
-    new_survey_entry = models.survey(q1 = request.q1, q2 = request.q2)
+    new_survey_entry = models.survey(
+        age = request.age, 
+        isPolishNative = request.isPolishNative,
+        sex = request.sex,
+        handPreference = request.handPreference,
+        education = request.education,
+        employment = request.employment,
+        likeScience = request.likeScience)
     
     db.add(new_survey_entry)
     db.commit()

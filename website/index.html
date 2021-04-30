@@ -41,25 +41,25 @@
             <secton id='survey-section' class='col-12 survey d-none space'>
                 <div>
                     <div class='form-group'>
-                        <label for='age'>Podaj swój wiek</label>
-                        <input type='number' min=1 max=100 class='form-control' id='age' aria-describedby='emailHelp' placeholder='Lat'>
+                        <label for='age'>Podaj swój wiek:</label>
+                        <input type='number' min=1 max=100 class='form-control' id='age' aria-describedby='emailHelp' value='1'>
                     </div>
                     <div class='form-check'>
-                        <p class='survey-category-type mb-0' for='isPolishMyNativeLang'>Czy język polski jest Twoim językiem ojczystym?</p>
-                        <input class='form-check-input' type='radio' name='isPolishMyNativeLang' id='isPolishMyNativeLang1' value='1' checked>
+                        <p class='survey-category-type mb-0' for='isPolishMyNativeLang1'>Czy język polski jest Twoim językiem ojczystym?</p>
+                        <input class='form-check-input' type='radio' name='isPolishNative' id='isPolishMyNativeLang1' value='1' checked>
                         <label class='form-check-label' for='isPolishMyNativeLang1'>
                             Tak
                         </label>
                     </div>
                     <div class='form-check'>
-                        <input class='form-check-input' type='radio' name='isPolishMyNativeLang' id='isPolishMyNativeLang0' value='2'>
+                        <input class='form-check-input' type='radio' name='isPolishNative' id='isPolishMyNativeLang0' value='0'>
                         <label class='form-check-label' for='isPolishMyNativeLang0'>
                             Nie
                         </label>
                     </div>
                     <br/>
                     <div class='form-check'>
-                        <p class='survey-category-type mb-0' for='sex'>Podaj swoją płeć</p>
+                        <p class='survey-category-type mb-0' for='sex'>Podaj swoją płeć:</p>
                         <input class='form-check-input' type='radio' name='sex' id='woman' value='0' checked>
                         <label class='form-check-label' for='woman'>
                             Kobieta
@@ -74,13 +74,13 @@
                     <div class='form-check'>
                         <br/>
                         <p class='survey-category-type mb-0' for='hand'>Jesteś prawo, czy lewo ręczny/a?</p>
-                        <input class='form-check-input' type='radio' name='hand' id='left' value='0' checked>
+                        <input class='form-check-input' type='radio' name='handPreference' id='left' value='0' checked>
                         <label class='form-check-label' for='left'>
                             Prawo
                         </label>
                     </div>
                     <div class='form-check'>
-                        <input class='form-check-input' type='radio' name='hand' id='right' value='1'>
+                        <input class='form-check-input' type='radio' name='handPreference' id='right' value='1'>
                         <label class='form-check-label' for='right'>
                             Lewo
                         </label>

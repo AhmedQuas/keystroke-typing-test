@@ -110,10 +110,25 @@ function keyStrokeAnalyzer(e){
 }
 
 async function sendSurvey(){
+    //Grab handlers for survey fields
+    age = document.getElementById('age').value;
+    isPolishNative = document.querySelector('input[name="isPolishNative"]:checked').value;
+    sex = document.querySelector('input[name="sex"]:checked').value;
+    handPreference = document.querySelector('input[name="handPreference"]:checked').value;
+    education = document.querySelector('input[name="education"]:checked').value;
+    employment = document.querySelector('input[name="employment"]:checked').value;
+    likeScience = document.querySelector('input[name="likeScience"]:checked').value;
+
     survey = {
-        q1: 'ans1',
-        q2: 'ans2'
+        age: age,
+        isPolishNative: isPolishNative,
+        sex: sex,
+        handPreference: handPreference,
+        education: education,
+        employment: employment,
+        likeScience
     }
+    
     try{
         const { data, status } = await request.post('/survey', survey);
 
