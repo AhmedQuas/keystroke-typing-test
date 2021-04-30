@@ -90,7 +90,7 @@ function nextButtonClick(e){
 }
 
 function keyStrokeAnalyzer(e){
-    console.log(e);
+    //console.log(e);
     if (e.type == "keydown"){
         key = {
             key: e.key,

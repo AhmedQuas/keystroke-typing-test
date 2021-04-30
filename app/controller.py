@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
 from typing import List
 from . import schemas, models
+from .validators import validate_data
 
 def add_survey(request: schemas.survey, db: Session):
     """
@@ -19,4 +20,4 @@ def add_test_data(request: List[List[schemas.test_data]]):
         App logic for /test-data endpoint
     """
     #print(request[0][0].key)
-    pass
+    validate_data(request)
