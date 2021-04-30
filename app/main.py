@@ -1,11 +1,17 @@
-from fastapi import FastAPI, status
+from sqlalchemy.orm import Session
+from fastapi import FastAPI, Depends, status
 from typing import List
 from fastapi.middleware.cors import CORSMiddleware
-from . import schemas
-from . import controller
+from . import schemas, controller, database, models
 
 #API documentation is accessible by /doc or /redoc path
 app = FastAPI()
+
+
+#Whenever we find some find any model we will create it on db
+models.Base.metadata.create_all(database.engine)
+
+get_db = database.get_db
 
 origins = ['*']
 
@@ -18,8 +24,8 @@ app.add_middleware(
 )
 
 @app.post('/survey', status_code = status.HTTP_201_CREATED)
-def survey(request: schemas.survey):
-    controller.add_survey(request)
+def survey(request: schemas.survey, db: Session = Depends(get_db)):
+    controller.add_survey(request, db)
     return {'status': 'test-data ok'}
 
 @app.get('/sentences')

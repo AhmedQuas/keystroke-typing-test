@@ -37,8 +37,7 @@ function acceptButtonClick(e){
     });
     sentenceBox.innerHTML = sentences[0];
     
-    //Send survey, hide & show sections
-    sendSurvey();
+    //Hide & show sections
     surveySection.classList.add('d-none');
     typingSection.classList.remove('d-none');
 }
@@ -60,7 +59,8 @@ function nextButtonClick(e){
         typingSection.classList.add('d-none');
         statsSection.classList.remove('d-none');
         
-        // Send data, end test and show statistics
+        // Send survey, test data, end test & show statistics
+        sendSurvey();
         sendTestData();
         alert('Test finished');
     }

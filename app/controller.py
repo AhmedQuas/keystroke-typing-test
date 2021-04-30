@@ -1,12 +1,18 @@
+from sqlalchemy.orm import Session
 from typing import List
-from . import schemas
+from . import schemas, models
 
-def add_survey(request: schemas.survey):
+def add_survey(request: schemas.survey, db: Session):
     """
         App logic for /survey endpoint
     """
+    new_survey_entry = models.survey(q1 = request.q1, q2 = request.q2)
+    
+    db.add(new_survey_entry)
+    db.commit()
+    
     #print(request.q1)
-    pass
+    return new_survey_entry
 
 def add_test_data(request: List[List[schemas.test_data]]):
     """
