@@ -40,7 +40,117 @@
             </secton>
             <secton id='survey-section' class='col-12 survey d-none space'>
                 <div>
-
+                    <div class='form-group'>
+                        <label for='age'>Podaj swój wiek</label>
+                        <input type='number' min=1 max=100 class='form-control' id='age' aria-describedby='emailHelp' placeholder='Lat'>
+                    </div>
+                    <div class='form-check'>
+                        <p class='survey-category-type mb-0' for='isPolishMyNativeLang'>Czy język polski jest Twoim językiem ojczystym?</p>
+                        <input class='form-check-input' type='radio' name='isPolishMyNativeLang' id='isPolishMyNativeLang1' value='1' checked>
+                        <label class='form-check-label' for='isPolishMyNativeLang1'>
+                            Tak
+                        </label>
+                    </div>
+                    <div class='form-check'>
+                        <input class='form-check-input' type='radio' name='isPolishMyNativeLang' id='isPolishMyNativeLang0' value='2'>
+                        <label class='form-check-label' for='isPolishMyNativeLang0'>
+                            Nie
+                        </label>
+                    </div>
+                    <br/>
+                    <div class='form-check'>
+                        <p class='survey-category-type mb-0' for='sex'>Podaj swoją płeć</p>
+                        <input class='form-check-input' type='radio' name='sex' id='woman' value='0' checked>
+                        <label class='form-check-label' for='woman'>
+                            Kobieta
+                        </label>
+                    </div>
+                    <div class='form-check'>
+                        <input class='form-check-input' type='radio' name='sex' id='man' value='1'>
+                        <label class='form-check-label' for='man'>
+                            Mężczyzna
+                        </label>
+                    </div>
+                    <div class='form-check'>
+                        <br/>
+                        <p class='survey-category-type mb-0' for='hand'>Jesteś prawo, czy lewo ręczny/a?</p>
+                        <input class='form-check-input' type='radio' name='hand' id='left' value='0' checked>
+                        <label class='form-check-label' for='left'>
+                            Prawo
+                        </label>
+                    </div>
+                    <div class='form-check'>
+                        <input class='form-check-input' type='radio' name='hand' id='right' value='1'>
+                        <label class='form-check-label' for='right'>
+                            Lewo
+                        </label>
+                    </div>
+                    <div class='form-check'>
+                        <br/>
+                        <p class='survey-category-type mb-0' for='primary'>Jakie jest Twoje wykształcenie?</p>
+                        <input class='form-check-input' type='radio' name='education' id='primary' value='0' checked>
+                        <label class='form-check-label' for='primary'>
+                            Jestem uczniem szkoły podstawowej
+                        </label>
+                    </div>
+                    <div class='form-check'>
+                        <input class='form-check-input' type='radio' name='education' id='high' value='1'>
+                        <label class='form-check-label' for='high'>
+                            Jestem uczniem szkoły ponadpodstawowej
+                        </label>
+                    </div>
+                    <div class='form-check'>
+                        <input class='form-check-input' type='radio' name='education' id='student' value='2'>
+                        <label class='form-check-label' for='student'>
+                            Jestem studentem
+                        </label>
+                    </div>
+                    <div class='form-check'>
+                        <input class='form-check-input' type='radio' name='education' id='graduate' value='3'>
+                        <label class='form-check-label' for='graduate'>
+                            Ukończyłem studia
+                        </label>
+                    </div>
+                    <div class='form-check'>
+                        <input class='form-check-input' type='radio' name='education' id='undergraduate' value='4'>
+                        <label class='form-check-label' for='undergraduate'>
+                            Nie ukończyłem studiów
+                        </label>
+                    </div>
+                    <div class='form-check'>
+                        <br/>
+                        <p class='survey-category-type mb-0' for='unemployment'>Czy pracujesz?</p>
+                        <input class='form-check-input' type='radio' name='employment' id='unemployment' value='0' checked>
+                        <label class='form-check-label' for='unemployment'>
+                            Nie
+                        </label>
+                    </div>
+                    <div class='form-check'>
+                        <input class='form-check-input' type='radio' name='employment' id='withComputer' value='1'>
+                        <label class='form-check-label' for='withComputer'>
+                            Tak i korzystam w pracy z komputera
+                        </label>
+                    </div>
+                    <div class='form-check'>
+                        <input class='form-check-input' type='radio' name='employment' id='withoutComputer' value='2'>
+                        <label class='form-check-label' for='withoutComputer'>
+                            Tak i <strong>nie</strong> korzystam w pracy z komputera
+                        </label>
+                    </div>
+                    <div class='form-check'>
+                        <br/>
+                        <p class='survey-category-type mb-0' for='likeScience'>Wolisz?</p>
+                        <input class='form-check-input' type='radio' name='likeScience' id='likeScience' value='1' checked>
+                        <label class='form-check-label' for='unemployment'>
+                            Przedmioty ścisłe
+                        </label>
+                    </div>
+                    <div class='form-check'>
+                        <input class='form-check-input' type='radio' name='likeScience' id='likeHuman' value='0'>
+                        <label class='form-check-label' for='likeHuman'>
+                            Przedmioty humanistyczne
+                        </label>
+                    </div>
                 </div>
                     <button id='accept-survey-button' type='submit' class='btn btn-primary float-right'>Rozpocznij test :)</button>
                 </div>
