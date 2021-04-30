@@ -15,6 +15,8 @@ def validate_data(request: schemas.test_data):
     #Validation checks
     negative_check(request)
     key_up_before_key_down_check(request)
+    key_press_chronological_check(request)
+    invalid_key_value_check(request)
 
     last_check(request)
 
@@ -42,7 +44,7 @@ def remove_unnecessary_keys(request: schemas.test_data):
         Remove keys not used in further calcucations e.x Shift or Alt Combinations
     """
 
-    unnecessary_keys = ['Shift', 'AltGraph']
+    unnecessary_keys = ['Shift', 'AltGraph', 'Enter']
 
     for sentence in range(len(request)):
         for keystroke in request[sentence]:
@@ -64,23 +66,52 @@ def negative_check(request: schemas.test_data):
             keystroke = request[sentence][char]
             
             if (keystroke.downTimeStamp < 0 or keystroke.upTimeStamp < 0):
-                raise HTTPException(status_code = status.HTTP_404_NOT_FOUND,
-                detail = 'Given data set fail during validation:negative_check stage')
+                raise HTTPException(status_code = status.HTTP_422_UNPROCESSABLE_ENTITY,
+                detail ={'msg':'Given data set fail during validation:negative_check stage'})
 
 def key_up_before_key_down_check(request: schemas.test_data):
     """
-        Check if downTimeStamp or upTimeStamp is negative value
+        Check if key press was before key up
     """
 
     for sentence in request:
         for keystroke in sentence:
             if(keystroke.downTimeStamp > keystroke.upTimeStamp ):
-                raise HTTPException(status_code = status.HTTP_404_NOT_FOUND,
-                detail = 'Given data set fail during validation:key_up_before_key_down_check stage')
-                
+                raise HTTPException(status_code = status.HTTP_422_UNPROCESSABLE_ENTITY,
+                detail ={'msg':'Given data set fail during validation:key_up_before_key_down_check stage'})
+
+def key_press_chronological_check(request: schemas.test_data):
+    """
+        Check if downTimeStamp is chronological value
+    """
+
+    prev_keystroke_downTimeStamp = 0
+
+    for sentence in range(len(request)):
+        for char in range(len(request[sentence])):
+            
+            current_keystroke_downTimeStamp = request[sentence][char].downTimeStamp
+
+            if (current_keystroke_downTimeStamp < prev_keystroke_downTimeStamp):
+                raise HTTPException(status_code = status.HTTP_422_UNPROCESSABLE_ENTITY,
+                detail ={'msg':'Given data set fail during validation:key_press_chronological_check stage'})
+            prev_keystroke_downTimeStamp = current_keystroke_downTimeStamp
+
+def invalid_key_value_check(request: schemas.test_data):
+    """
+        Check if key field contains invalid value - multicharacter value not specified in valid_multi_char_keys list
+    """
+    
+    valid_multi_char_keys = ['Backspace']
+
+    for sentence in request:
+        for keystroke in sentence:
+            if not(len(keystroke.key) is 1 or keystroke.key in valid_multi_char_keys):
+                raise HTTPException(status_code = status.HTTP_422_UNPROCESSABLE_ENTITY,
+                detail ={'msg':'Given data set fail during validation:invalid_key_value_check stage'})
 
 def last_check(request: schemas.survey):
     """
         Last check used for checking the pipeline output => debug & testing purpose only
     """
-    #pprint.pprint(request)
+    pprint.pprint(request)
