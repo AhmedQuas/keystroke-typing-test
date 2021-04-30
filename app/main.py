@@ -31,15 +31,20 @@ def survey(request: schemas.survey, db: Session = Depends(get_db)):
 @app.get('/sentences')
 def get_test_data():
     return {'sentences': [
-        'Zamieszaj ciasto i małą chochlą odmierz porcję na naleśnika.',
         'Wylej na patelnię tylko tyle ciasta, by masa przykryła powierzchnię patelni.',
-        'Przy każdym nalewaniu porcji na naleśnika podnoszę patelnię nad palnik.',
-        'Od razu poruszam patelnią tak, by ciasto rozeszło się po całej powierzchni',
-        'Naleśniki powinny być cienkie i smaczne',
+        'Tutaj może Ci się przydać płaska łopatka do przewracania naleśników.',
+        'Zabezpiecz wąż, aby nie przemieszczał się podczas pracy urządzenia.',
+        'Wciśnij przycisk „WIROWANIE” taką ilość razy, aby wybrać żądaną ilość obrotów.',
+        'Wśród gimnazjalistów przeprowadzono ankietę na temat ich zainteresowań',
+        'Ilu uczniów brało udział w corocznej ankiecie?',
+        'Jeśli wejdziesz między wrony, musisz krakać tak jak one.',
+        'Lepszy w domu groch, kapusta niż na wojnie kura tłusta.',
+        'W 966 roku książę Mieszko I przyjął chrzest i zapoczątkowało to chrystianizację kraju.',
+        '18 kwietnia 1025 roku w Gnieźnie odbyła się koronacja Bolesława Chrobrego na króla Polski.'
     ]}
 
 @app.post('/test-data', status_code = status.HTTP_201_CREATED)
-def test_data(request: List[List[schemas.test_data]]):
+def test_data(request: List[List[schemas.keystroke]]):
     controller.add_test_data(request)
     return {'status': 'test-data ok'}
 

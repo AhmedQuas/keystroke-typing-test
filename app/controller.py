@@ -15,7 +15,7 @@ def add_survey(request: schemas.survey, db: Session):
     #print(request.q1)
     return new_survey_entry
 
-def add_test_data(request: List[List[schemas.test_data]]):
+def add_test_data(request: List[List[schemas.keystroke]]):
     """
         App logic for /test-data endpoint
     """
