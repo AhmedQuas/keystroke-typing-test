@@ -1,9 +1,11 @@
-const acceptButton = document.getElementById('accept-button');
+const acceptIntroButton = document.getElementById('accept-intro-button');
+const acceptSurveyButton = document.getElementById('accept-survey-button');
 const nextButton = document.getElementById('next-button');
 const userInput = document.getElementById('user-input');
 const sentenceBox = document.getElementById('sentence');
 
-const surveySection = document.getElementById('survey-section');
+const introSection = document.getElementById('intro-section');
+const surveySection = document.getElementById('survey-section'); 
 const typingSection = document.getElementById('typing-section');
 const statsSection = document.getElementById('stats-section');
 
@@ -11,14 +13,15 @@ const request = axios.create({
     baseURL: 'http://localhost:80'
 })
 
-check = [acceptButton, nextButton, userInput, sentenceBox,
-        surveySection, typingSection, statsSection];
+check = [acceptIntroButton, acceptSurveyButton, nextButton, userInput, sentenceBox,
+        introSection, surveySection, typingSection, statsSection];
 
 if (check.includes(null)){
     console.error('Some of the required items are missing')
 }
 else{
-    acceptButton.addEventListener('click', acceptButtonClick);
+    acceptIntroButton.addEventListener('click', acceptIntroButtonClick);
+    acceptSurveyButton.addEventListener('click', acceptSurveyButtonClick)
     nextButton.addEventListener('click', nextButtonClick);
 
     userInput.onkeydown = userInput.onkeyup = keyStrokeAnalyzer;
@@ -30,9 +33,20 @@ globalKeystrokes = [];
 getSentences();
 
 
-function acceptButtonClick(e){
+function acceptIntroButtonClick(e){
     buttons.push({
-        type:'accept',
+        type:'acceptIntro',
+        timestamp:e.timeStamp
+    });
+    
+    //Hide & show sections
+    introSection.classList.add('d-none');
+    surveySection.classList.remove('d-none');
+}
+
+function acceptSurveyButtonClick(e){
+    buttons.push({
+        type:'acceptSurvey',
         timestamp:e.timeStamp
     });
     sentenceBox.innerHTML = sentences[0];

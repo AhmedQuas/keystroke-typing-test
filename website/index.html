@@ -3,6 +3,7 @@
 <head>
     <meta charset='UTF-8' />
     <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous'>
+    <link rel='stylesheet' href='style.css'>
     <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js' integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' crossorigin='anonymous'></script>
     <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous'></script>
@@ -17,19 +18,38 @@
             <secton class='col-12'>
                 <h1 class='h5 text-center'>Czy 'widać' Cię przez klawiaturę? - Analiza dynamiki naciśnięć klawiszy w różnych grupach społecznych.</h1>
             </secton>
-            <secton id='survey-section' class='col-12 survey'>
-                <div class='intro'>
+            <secton id='intro-section' class='col-12 intro space'>
+                <div>
                     <h2 class='h5 text-center'>Kilka słów o projecie</h2>
-                    <p class='project-descritpion'>Lorem ipsum, ktos to później uzupełni...</p>
-                    <button id='accept-button' type='submit' class='btn btn-primary float-right'>Idziemy dalej!</button>
+                    <div class='project-descritpion'>
+                        <p>
+                            <strong>Witaj!</strong>
+                        </p>
+                        <p>Jesteśmy studentami Politechniki Wrocławskiej i w ramach projektu z biometrii prowadzimy badania, podczas których analizujemy dynamikę oraz sposób naciśnięć klawiszy każdego z uczestników.</p>
+                        <p>Naszym celem jest wywnioskowanie, jakie cechy pisania na klawiaturze odpowiadają poszczególnym grupom społecznym i czy można przewidzieć w jaki sposób będzie pisała dana osoba.</p>
+                        <p>Przygotowaliśmy zdania, które będą losowo wyświetlały się na Twoim ekranie i prosimy o ich transkrypcję 1:1. Dosłownie chcemy, byś napisał dokładnie to samo, co widzisz na ekranie.</p>
+                        <p>Po wykonaniu badania, zostaniesz o tym poinformowany i będziesz mógł zobaczyć odpowiadające Tobie statystyki.</p>
+                        <p>
+                            <strong>Bardzo dziękujemy za udział w badaniu i życzymy powodzenia :)</strong>
+                        </p>
+                        <p class='text-right'>nazwa zespolu</p>
+                    </div>
+                    <button id='accept-intro-button' type='submit' class='btn btn-primary float-right'>Idziemy dalej!</button>
                 </div>
             </secton>
-            <secton id='typing-section' class='col-12 text-center typing-test d-none'>
+            <secton id='survey-section' class='col-12 survey d-none space'>
+                <div>
+
+                </div>
+                    <button id='accept-survey-button' type='submit' class='btn btn-primary float-right'>Rozpocznij test :)</button>
+                </div>
+            </secton>
+            <secton id='typing-section' class='col-12 text-center typing-test d-none space'>
                 <p id='sentence' class='text-to-write'></p>
                 <input id='user-input' type='text' class='written-text'/><br/>
                 <button id='next-button' type='submit' class='btn btn-primary float-right'>Następne</button>
             </secton>
-            <secton id='stats-section' class='col-12 text-center test-statistics d-none'>
+            <secton id='stats-section' class='col-12 text-center test-statistics d-none space'>
                 <p>Statystyki dotyczące testu</p>
             </secton>
         </article>
