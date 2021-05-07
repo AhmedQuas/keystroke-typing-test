@@ -32,4 +32,4 @@ def add_test_data(request: List[List[schemas.keystroke]], db: Session):
     keystroke_stats = schemas.keystroke_stats()
     keystroke_statistics.keystroke_statistics(request, keystroke_stats)
 
-    print('final keystroke', keystroke_stats)
+    print(keystroke_stats)

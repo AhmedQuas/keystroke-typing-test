@@ -27,3 +27,5 @@ class keystroke_stats(BaseModel):
     aspt = 0        #Average Space Time
     atst = 0        #Average Tap Space Time
     att = 0         #Average Tap Time
+    ec = 0          #Errors Corrected
+    tfs = 0         #Taps for sign

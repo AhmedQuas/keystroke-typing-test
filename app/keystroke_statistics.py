@@ -11,6 +11,8 @@ def keystroke_statistics(request: schemas.keystroke, keystroke_stat: schemas.key
     keystroke_stat.aspt = aspt(request)
     keystroke_stat.atst = atst(request)
     keystroke_stat.att = att(request)
+    keystroke_stat.ec = ec(request)
+    keystroke_stat.tfs = tfs(request)
 
 def rollover(request: schemas.keystroke):
     """
@@ -103,3 +105,32 @@ def att(request: schemas.keystroke):
             total_tap_time = keystroke.upTimeStamp - keystroke.downTimeStamp
 
     return total_tap_time/total_chars_number
+
+def ec(request: schemas.keystroke):
+    """
+        Count number of backspace & delete chars
+    """
+
+    total_backspaces = 0
+    char_remove_keys = ['Backspace', 'Delete']
+    
+    for sentence in request:
+        for keystroke in sentence:
+            if(keystroke.key in char_remove_keys):
+                total_backspaces += 1
+
+    return total_backspaces
+
+def tfs(request: schemas.keystroke):
+    """
+        Count Taps for Sign - number of keystroke.repeat occurences
+    """
+    
+    repeated_chars = 0
+
+    for sentence in request:
+        for keystroke in sentence:
+            if(keystroke.repeat is True):
+                repeated_chars += 1
+
+    return repeated_chars

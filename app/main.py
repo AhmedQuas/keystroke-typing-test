@@ -34,7 +34,7 @@ def get_test_data():
         'Wylej na patelnię tylko tyle ciasta, by masa przykryła powierzchnię patelni.',
         'Tutaj może Ci się przydać płaska łopatka do przewracania naleśników.',
         'Zabezpiecz wąż, aby nie przemieszczał się podczas pracy urządzenia.',
-        'Wciśnij przycisk „WIROWANIE” taką ilość razy, aby wybrać żądaną ilość obrotów.',
+        'Wciśnij przycisk WIROWANIE taką ilość razy, aby wybrać żądaną ilość obrotów.',
         'Wśród gimnazjalistów przeprowadzono ankietę na temat ich zainteresowań',
         'Ilu uczniów brało udział w corocznej ankiecie?',
         'Jeśli wejdziesz między wrony, musisz krakać tak jak one.',

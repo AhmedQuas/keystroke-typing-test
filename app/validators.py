@@ -47,7 +47,7 @@ def remove_unnecessary_keys(request: schemas.keystroke):
         Remove keys not used in further calcucations e.x Shift or Alt Combinations
     """
 
-    necessary_keys = ['Backspace']
+    necessary_keys = ['Backspace','Delete']
     removed_obj = True
 
     #Array used to make sure that we remove all unnecessary keys
@@ -117,7 +117,7 @@ def invalid_key_value_check(request: schemas.keystroke):
         Check if key field contains invalid value - multicharacter value not specified in valid_multi_char_keys list
     """
     
-    valid_multi_char_keys = ['Backspace']
+    valid_multi_char_keys = ['Backspace','Delete']
 
     for sentence in request:
         for keystroke in sentence:
