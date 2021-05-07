@@ -1,7 +1,7 @@
 from . import schemas
 from .helpers import statistics
 
-def keystroke_statistics(request: schemas.keystroke, keystroke_stat: schemas.keystroke_fingerprint):
+def keystroke_statistics(request: schemas.keystroke, keystroke_stat: schemas.keystroke_stats):
     """
         Register statistics functions below
     """
@@ -9,6 +9,8 @@ def keystroke_statistics(request: schemas.keystroke, keystroke_stat: schemas.key
     keystroke_stat.rollover = rollover(request)
     keystroke_stat.asit = asit(request)
     keystroke_stat.aspt = aspt(request)
+    keystroke_stat.atst = atst(request)
+    keystroke_stat.att = att(request)
 
 def rollover(request: schemas.keystroke):
     """
@@ -67,3 +69,37 @@ def aspt(request: schemas.keystroke):
             prev_keystroke = request[sentence][char]
 
     return total_space_time/space_count
+
+def atst(request: schemas.keystroke):
+    """
+        Count Average Tap Space Time
+    """
+
+    total_chars_number = statistics.total_chars(request)
+    total_tap_space_time = 0
+
+    prev_keystroke = request[0][0]
+
+    for sentence in range(len(request)):
+        for char in range(len(request[sentence])):
+            if not(sentence is 0 and char is 0) and (request[sentence][char].downTimeStamp > prev_keystroke.upTimeStamp):
+                    total_tap_space_time += request[sentence][char].downTimeStamp - prev_keystroke.upTimeStamp
+            #else:  #Uncomment to see exclude keystrokes
+            #    print('request[',sentence,',',char,']')
+
+            prev_keystroke = request[sentence][char]
+
+    return total_tap_space_time/total_chars_number
+
+def att(request: schemas.keystroke):
+    """
+        Count Average Tap Time
+    """
+
+    total_chars_number = statistics.total_chars(request)
+
+    for sentence in request:
+        for keystroke in sentence:
+            total_tap_time = keystroke.upTimeStamp - keystroke.downTimeStamp
+
+    return total_tap_time/total_chars_number

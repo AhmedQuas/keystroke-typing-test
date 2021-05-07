@@ -21,7 +21,9 @@ class survey(BaseModel):
     employment: int
     likeScience: bool
 
-class keystroke_fingerprint(BaseModel):
+class keystroke_stats(BaseModel):
     rollover = 0
     asit = 0        #Average Sign Time
     aspt = 0        #Average Space Time
+    atst = 0        #Average Tap Space Time
+    att = 0         #Average Tap Time
