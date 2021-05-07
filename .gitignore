@@ -3,3 +3,4 @@ db/*
 app/__pycache__/*
 .env
 test_data/*
+app/helpers/__pycache__/*

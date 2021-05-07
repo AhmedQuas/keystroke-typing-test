@@ -1,21 +1,69 @@
 from . import schemas
+from .helpers import statistics
 
-def keystroke_statistics(request: schemas.keystroke, keystrokes: schemas.keystroke_fingerprint):
+def keystroke_statistics(request: schemas.keystroke, keystroke_stat: schemas.keystroke_fingerprint):
     """
         Register statistics functions below
     """
 
-    rollover(request, keystrokes)
-    print('Inside register function', keystrokes.rollover)
+    keystroke_stat.rollover = rollover(request)
+    keystroke_stat.asit = asit(request)
+    keystroke_stat.aspt = aspt(request)
 
-def rollover(request: schemas.keystroke, keystrokes: schemas.keystroke_fingerprint):
-
+def rollover(request: schemas.keystroke):
+    """
+        Count occurances of rollover
+    """
     prev_keystroke_upTimeStamp = 0
+    rollover = 0
 
     for sentence in range(len(request)):
         for char in range(len(request[sentence])):
 
             if (request[sentence][char].downTimeStamp < prev_keystroke_upTimeStamp):
-                keystrokes.rollover +=1
+                rollover +=1
                 #print(request[sentence][char]) #Uncomment to see rollover keys in fastapi console
             prev_keystroke_upTimeStamp = request[sentence][char].upTimeStamp
+
+    return rollover
+
+def asit(request: schemas.keystroke):
+    """
+        Count Average Sign Time
+    """
+
+    total_chars_number = statistics.total_chars(request)
+
+    total_chars_press_time = 0
+
+    for sentence in request:
+        for keystroke in sentence:
+            total_chars_press_time += keystroke.upTimeStamp - keystroke.downTimeStamp
+
+    return total_chars_press_time/total_chars_number
+
+def aspt(request: schemas.keystroke):
+    """
+        Count Average Space Time
+    """
+
+    space_count = 0
+    total_space_time = 0
+
+    prev_keystroke = request[0][0]
+
+    for sentence in range(len(request)):
+        for char in range(len(request[sentence])):
+
+            if (request[sentence][char].key is ' '):
+                space_count +=1
+                
+                #Array overflow
+                if len(request[sentence]) is (char + 1):
+                    total_space_time += request[sentence][char].upTimeStamp - prev_keystroke.upTimeStamp
+                else:
+                    total_space_time += request[sentence][char+1].downTimeStamp - prev_keystroke.upTimeStamp
+
+            prev_keystroke = request[sentence][char]
+
+    return total_space_time/space_count

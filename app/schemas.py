@@ -23,3 +23,5 @@ class survey(BaseModel):
 
 class keystroke_fingerprint(BaseModel):
     rollover = 0
+    asit = 0        #Average Sign Time
+    aspt = 0        #Average Space Time

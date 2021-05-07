@@ -31,3 +31,5 @@ def add_test_data(request: List[List[schemas.keystroke]], db: Session):
 
     keystroke_fingerprint = schemas.keystroke_fingerprint()
     keystroke_statistics.keystroke_statistics(request, keystroke_fingerprint)
+
+    print('final keystroke', keystroke_fingerprint)
