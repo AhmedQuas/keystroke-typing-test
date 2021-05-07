@@ -18,7 +18,7 @@ def validate_data(request: schemas.keystroke):
     key_press_chronological_check(request)
     invalid_key_value_check(request)
 
-    last_check(request)
+    #last_check(request)
 
 #########################################
 # Sanitiazion functions implementations #

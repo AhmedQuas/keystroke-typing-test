@@ -44,9 +44,10 @@ def get_test_data():
     ]}
 
 @app.post('/test-data', status_code = status.HTTP_201_CREATED)
-def test_data(request: List[List[schemas.keystroke]]):
-    controller.add_test_data(request)
-    return {'status': 'test-data ok'}
+def test_data(request: List[List[schemas.keystroke]], db:Session = Depends(get_db)):
+    controller.add_test_data(request, db)
+    #return {'status': 'test-data ok'}
+    return request
 
 @app.get('/statistics')
 def show_statistics():

@@ -1,6 +1,6 @@
 from sqlalchemy.orm import Session
 from typing import List
-from . import schemas, models
+from . import schemas, models, validators, keystroke_erros, keystroke_statistics
 from .validators import validate_data
 
 def add_survey(request: schemas.survey, db: Session):
@@ -22,9 +22,12 @@ def add_survey(request: schemas.survey, db: Session):
     #print(request.q1)
     return new_survey_entry
 
-def add_test_data(request: List[List[schemas.keystroke]]):
+def add_test_data(request: List[List[schemas.keystroke]], db: Session):
     """
         App logic for /test-data endpoint
     """
     #print(request[0][0].key)
-    validate_data(request)
+    validators.validate_data(request)
+
+    keystroke_fingerprint = schemas.keystroke_fingerprint()
+    keystroke_statistics.keystroke_statistics(request, keystroke_fingerprint)

@@ -20,3 +20,6 @@ class survey(BaseModel):
     education: int
     employment: int
     likeScience: bool
+
+class keystroke_fingerprint(BaseModel):
+    rollover = 0
