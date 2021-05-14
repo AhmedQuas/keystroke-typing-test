@@ -1,5 +1,5 @@
 from .. import schemas
-from ..helpers.statistics import total_chars
+from .helpers import total_chars
 
 def keystroke_statistics(request: schemas.keystroke, keystroke_stat: schemas.keystroke_stats):
     """
