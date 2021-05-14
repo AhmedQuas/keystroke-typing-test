@@ -31,6 +31,7 @@ else{
 buttons = [];
 sentenceKeystrokes = [];
 globalKeystrokes = [];
+writtenSentences = [];
 getSentences();
 
 
@@ -66,6 +67,7 @@ function nextButtonClick(e){
     });
 
     len = globalKeystrokes.push(sentenceKeystrokes);
+    writtenSentences.push(userInput.value);
     console.log(len);
     userInput.value = '';
     sentenceKeystrokes = [];
@@ -77,8 +79,7 @@ function nextButtonClick(e){
         statsSection.classList.remove('d-none');
         
         // Send survey, test data, end test & show statistics
-        sendSurvey();
-        sendTestData();
+        sendData();
         alert('Test finished');
     }
     else{
@@ -109,7 +110,7 @@ function keyStrokeAnalyzer(e){
     }
 }
 
-async function sendSurvey(){
+function surveyJsonFromat(){
     //Grab handlers for survey fields
     age = document.getElementById('age').value;
     isPolishNative = document.querySelector('input[name="isPolishNative"]:checked').value;
@@ -129,16 +130,7 @@ async function sendSurvey(){
         likeScience
     }
     
-    try{
-        const { data, status } = await request.post('/survey', survey);
-
-        if (status !== 201){
-            console.error('None 201 response code');    
-        }
-    }
-    catch(error){
-        console.error('Error occured during sending test data to /test-data');
-    }
+    return survey
 }
 
 async function getSentences(){
@@ -152,9 +144,18 @@ async function getSentences(){
     }
  }
 
-async function sendTestData(){
+async function sendData(){
+    
+    survey = surveyJsonFromat();
+    
     try{
-        const { data, status } = await request.post('/test-data', globalKeystrokes);
+        const { data, status } = await request.post('/data', [
+            {
+            'survey': survey,
+            'keystrokes': globalKeystrokes,
+            'written-sentences': writtenSentences
+            }
+        ]);
 
         if (status !== 201){
             console.error('None 201 response code');    

@@ -1,5 +1,5 @@
 from sqlalchemy.orm import Session
-from typing import List
+from typing import List, Dict
 from . import schemas, models, validators, keystroke_erros, keystroke_statistics
 from .validators import validate_data
 
@@ -22,14 +22,18 @@ def add_survey(request: schemas.survey, db: Session):
     #print(request.q1)
     return new_survey_entry
 
-def add_test_data(request: List[List[schemas.keystroke]], db: Session):
+def add_data(data: List[Dict], db: Session):
     """
         App logic for /test-data endpoint
     """
-    #print(request[0][0].key)
-    validators.validate_data(request)
+
+    survey = data['survey']
+    keystrokes = data['keystrokes']
+    written_sentences = data['written_sentences']
+
+    validators.validate_data(keystrokes)
 
     keystroke_stats = schemas.keystroke_stats()
-    keystroke_statistics.keystroke_statistics(request, keystroke_stats)
+    keystroke_statistics.keystroke_statistics(keystrokes, keystroke_stats)
 
     print(keystroke_stats)
