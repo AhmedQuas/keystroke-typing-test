@@ -1,5 +1,5 @@
-from . import schemas
-from .helpers import statistics
+from .. import schemas
+from ..helpers.statistics import total_chars
 
 def keystroke_statistics(request: schemas.keystroke, keystroke_stat: schemas.keystroke_stats):
     """
@@ -36,7 +36,7 @@ def asit(request: schemas.keystroke):
         Count Average Sign Time
     """
 
-    total_chars_number = statistics.total_chars(request)
+    total_chars_number = total_chars(request)
 
     total_chars_press_time = 0
 
@@ -77,7 +77,7 @@ def atst(request: schemas.keystroke):
         Count Average Tap Space Time
     """
 
-    total_chars_number = statistics.total_chars(request)
+    total_chars_number = total_chars(request)
     total_tap_space_time = 0
 
     prev_keystroke = request[0][0]
@@ -98,7 +98,7 @@ def att(request: schemas.keystroke):
         Count Average Tap Time
     """
 
-    total_chars_number = statistics.total_chars(request)
+    total_chars_number = total_chars(request)
 
     for sentence in request:
         for keystroke in sentence:

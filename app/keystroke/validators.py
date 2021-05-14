@@ -1,9 +1,9 @@
 from fastapi import HTTPException, status
-from . import schemas
+from .. import schemas
 # For json debug purpose only pprint.pprint(request)
 import pprint, json
 
-def validate_data(request: schemas.keystroke):
+def validate_keystroke_data(request: schemas.keystroke):
     """
         Register sanitize function & validation checks inside this function
     """

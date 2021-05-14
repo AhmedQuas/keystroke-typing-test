@@ -1,7 +1,8 @@
 from sqlalchemy.orm import Session
 from typing import List, Dict
-from . import schemas, models, validators, keystroke_erros, keystroke_statistics
-from .validators import validate_data
+from . import schemas, models, keystroke_erros
+from .keystroke.validators import validate_keystroke_data
+from .keystroke.statistics import keystroke_statistics 
 
 def add_survey(request: schemas.survey, db: Session):
     """
@@ -31,9 +32,9 @@ def add_data(data: List[Dict], db: Session):
     keystrokes = data['keystrokes']
     written_sentences = data['written_sentences']
 
-    validators.validate_data(keystrokes)
+    validate_keystroke_data(keystrokes)
 
     keystroke_stats = schemas.keystroke_stats()
-    keystroke_statistics.keystroke_statistics(keystrokes, keystroke_stats)
+    keystroke_statistics(keystrokes, keystroke_stats)
 
     print(keystroke_stats)
