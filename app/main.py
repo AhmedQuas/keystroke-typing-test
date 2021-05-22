@@ -30,13 +30,13 @@ def get_test_data():
         'Wylej na patelnię tylko tyle ciasta, by masa przykryła powierzchnię patelni.',
         'Tutaj może Ci się przydać płaska łopatka do przewracania naleśników.',
         'Zabezpiecz wąż, aby nie przemieszczał się podczas pracy urządzenia.',
-        'Wciśnij przycisk WIR taką ilość razy, aby wybrać żądaną ilość obrotów.',
-        'Wśród gimnazjalistów przeprowadzono ankietę na temat ich zainteresowań',
-        'Ilu uczniów brało udział w corocznej ankiecie?',
-        'Jeśli wejdziesz między wrony, musisz krakać tak jak one.',
-        'Lepszy w domu groch, kapusta niż na wojnie kura tłusta.',
-        'W 966 roku książę Mieszko I przyjął chrzest i zapoczątkowało to chrystianizację kraju.',
-        '18 kwietnia 1025 roku w Gnieźnie odbyła się koronacja Bolesława Chrobrego na króla Polski.'
+        #'Wciśnij przycisk WIR taką ilość razy, aby wybrać żądaną ilość obrotów.',
+        #'Wśród gimnazjalistów przeprowadzono ankietę na temat ich zainteresowań',
+        #'Ilu uczniów brało udział w corocznej ankiecie?',
+        #'Jeśli wejdziesz między wrony, musisz krakać tak jak one.',
+        #'Lepszy w domu groch, kapusta niż na wojnie kura tłusta.',
+        #'W 966 roku książę Mieszko I przyjął chrzest i zapoczątkowało to chrystianizację kraju.',
+        #'18 kwietnia 1025 roku w Gnieźnie odbyła się koronacja Bolesława Chrobrego na króla Polski.'
     ]}
 
 @app.post('/data', status_code = status.HTTP_201_CREATED)
