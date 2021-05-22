@@ -36,3 +36,4 @@ class keystroke_stats(BaseModel):
     longAlt = 0
     lostAlt = 0
     invalidCase = 0
+    capsLockUsage = False

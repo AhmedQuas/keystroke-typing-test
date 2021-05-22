@@ -7,12 +7,13 @@ def keystroke_statistics(request: schemas.keystroke, keystroke_stat: schemas.key
     """
 
     keystroke_stat.rollover = rollover(request)
-    keystroke_stat.asit = asit(request)
-    keystroke_stat.aspt = aspt(request)
-    keystroke_stat.atst = atst(request)
-    keystroke_stat.att = att(request)
+    keystroke_stat.asit = round(asit(request),0)
+    keystroke_stat.aspt = round(aspt(request),0)
+    keystroke_stat.atst = round(atst(request),0)
+    keystroke_stat.att = round(att(request),3)
     keystroke_stat.ec = ec(request)
     keystroke_stat.tfs = tfs(request)
+    keystroke_stat.capsLockUsage = capsLockUsage(request)
 
 def rollover(request: schemas.keystroke):
     """
@@ -134,3 +135,16 @@ def tfs(request: schemas.keystroke):
                 repeated_chars += 1
 
     return repeated_chars
+
+def capsLockUsage(request: schemas.keystroke):
+    """
+    
+    """
+
+    for sentence in request:
+        for keystroke in sentence:
+            if keystroke.key.isupper():
+                if not keystroke.shiftKey:
+                    return True
+
+    return False
