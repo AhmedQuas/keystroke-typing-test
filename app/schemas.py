@@ -29,3 +29,9 @@ class keystroke_stats(BaseModel):
     att = 0         #Average Tap Time
     ec = 0          #Errors Corrected
     tfs = 0         #Taps for sign
+    sch = 0         #Sign change
+    so = 0          #Sign ommission
+    sa = 0          #Sign addtion
+    longAlt = 0
+    lostAlt = 0
+    invalidCase = 0

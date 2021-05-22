@@ -2,6 +2,7 @@ from fastapi import HTTPException, status
 from .. import schemas
 from typing import List
 from . import helpers
+from . import error_stats
 # For json debug purpose only pprint.pprint(request)
 import pprint, json
 import Levenshtein
@@ -16,8 +17,8 @@ def validate_written_sentence_data(written_sentence: List[str], keystrokes: List
 
     prefiltered_data = calc_levenshtein(written_sentences_split, correct_sentences_split, keystrokes)
 
-    #print('written_sentence =>', prefiltered_data['written_sentences'])
-    #print('correct_sentence =>', prefiltered_data['correct_sentences'])
+    print('written_sentence =>', prefiltered_data['written_sentences'])
+    print('correct_sentence =>', prefiltered_data['correct_sentences'])
 
     return prefiltered_data
 
@@ -27,8 +28,8 @@ def validate_written_sentence_data(written_sentence: List[str], keystrokes: List
 
 def calc_levenshtein(written_sentence: List[str], correct_sentence: List[str], keystrokes: List[schemas.keystroke]):
     """
-        Calc levenshtein metric and remove sentences that have word with metric bigger than 4. 
-        Alo throw exception in case the number of words do not match between interviewee and correct sentences
+        Calc levenshtein metric and remove sentences that have word with metric bigger than 3. 
+        Also throw exception in case the number of words do not match between interviewee and correct sentences
     """
     
     if len(correct_sentence) != len(written_sentence):

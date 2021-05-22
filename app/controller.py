@@ -4,7 +4,7 @@ from . import schemas, models, keystroke_erros
 from .keystroke.validators import validate_keystroke_data
 from .keystroke.statistics import keystroke_statistics
 from .written_sentences.validators import validate_written_sentence_data
-from .written_sentences.statistics import written_sentence_statistics
+from .written_sentences.error_stats import error_statistics
 
 def add_survey(request: schemas.survey, db: Session):
     """
@@ -46,6 +46,9 @@ def add_data(data: List[Dict], db: Session):
     #print('written_sentences =>', written_sentences)
 
     keystroke_stats = schemas.keystroke_stats()
+
+    error_statistics(correct_sentences, written_sentences, keystroke_stats)
+
     keystroke_statistics(keystrokes, keystroke_stats)
 
     print(keystroke_stats)
