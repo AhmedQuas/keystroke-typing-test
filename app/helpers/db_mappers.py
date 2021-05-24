@@ -5,22 +5,22 @@ from enum import Enum
 # But due to increase speed of operations it is done by enum mapper
 
 
-isPolishNative = {
+m_isPolishNative = {
     'no': 0,
     'yes': 1
 }
 
-handPreference = {
+m_handPreference = {
     'left': 0,
     'right': 1
 }
 
-sex = {
+m_sex = {
     'woman': 0,
     'man': 1
 }
 
-education = {
+m_education = {
     'primary': 0,
     'high': 1,
     'student': 2,
@@ -28,13 +28,13 @@ education = {
     'undergraduate': 4
 }
 
-employment = {
+m_employment = {
     'unemployed' : 0,
     'withcomputer' : 1,
     'withoutcomputer' : 2
 }
 
-likeScience = {
+m_likeScience = {
     'yes' : 1,
     'no' : 0
 }

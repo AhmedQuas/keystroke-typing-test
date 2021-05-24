@@ -10,7 +10,9 @@ def gen_statistics(db: Session):
     result = {}
 
     result['interviewee'] = interviewee_statistics(db)
+    result['isPolishNative'] = isPolishNative(db)
     result['hand_preferences'] = hand_preference(db)
+    result['sex'] = sex(db)
     
     return result
 
@@ -37,15 +39,34 @@ def interviewee_statistics(db: Session):
         'invalidCase': interviewee_stats.invalidCase,
         'capsLockUsage': interviewee_stats.capsLockUsage,
     }
+
+def isPolishNative(db: Session):
     
+    yes = db.query(models.survey).filter(models.survey.isPolishNative == m_isPolishNative['yes']).count()
+    no = db.query(models.survey).filter(models.survey.isPolishNative == m_isPolishNative['no']).count()
+
+    return {
+        'yes': yes,
+        'no': no
+    }
 
 def hand_preference(db: Session):
 
-    left_hand = db.query(models.survey).filter(models.survey.handPreference == handPreference['left']).count()
-    right_hand = db.query(models.survey).filter(models.survey.handPreference == handPreference['right']).count()
+    left_hand = db.query(models.survey).filter(models.survey.handPreference == m_handPreference['left']).count()
+    right_hand = db.query(models.survey).filter(models.survey.handPreference == m_handPreference['right']).count()
 
 
     return {
         'left_hand': left_hand,
         'right_hand': right_hand
+    }
+
+def sex(db: Session):
+    
+    women = db.query(models.survey).filter(models.survey.sex == m_sex['woman']).count()
+    men = db.query(models.survey).filter(models.survey.sex == m_sex['man']).count()
+
+    return {
+        'women': women,
+        'men': men
     }
