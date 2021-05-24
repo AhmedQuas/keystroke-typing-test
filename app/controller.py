@@ -42,13 +42,33 @@ def add_data(data: List[Dict], db: Session):
     
     validate_keystroke_data(keystrokes)
 
-    #print('correct_sentences =>', correct_sentences)
-    #print('written_sentences =>', written_sentences)
-
     keystroke_stats = schemas.keystroke_stats()
 
     error_statistics(correct_sentences, written_sentences, keystroke_stats)
 
     keystroke_statistics(keystrokes, keystroke_stats)
 
-    print(keystroke_stats)
+    #print(keystroke_stats)
+    add_survey(survey, db)
+
+    new_keystroke_statistics = models.keystroke_statistic(
+        user_id = 1,
+        rollover = keystroke_stats.rollover,
+        asit = keystroke_stats.asit,
+        aspt = keystroke_stats.aspt,
+        atst = keystroke_stats.atst,
+        att = keystroke_stats.att,
+        ec = keystroke_stats.ec,
+        enc = keystroke_stats.enc,
+        tfs = keystroke_stats.tfs,
+        sch = keystroke_stats.sch,
+        so = keystroke_stats.so,
+        sa = keystroke_stats.sa,
+        longAlt = keystroke_stats.longAlt,
+        lostAlt = keystroke_stats.lostAlt,
+        invalidCase = keystroke_stats.invalidCase,
+        capsLockUsage =  keystroke_stats.capsLockUsage
+    )
+
+    db.add(new_keystroke_statistics)
+    db.commit()

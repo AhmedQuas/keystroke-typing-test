@@ -1,5 +1,6 @@
-from sqlalchemy import Column, Integer, String, Boolean
+from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from .database import Base
+from sqlalchemy.orm import relationship
 
 class survey(Base):
     __tablename__ = 'surveys'
@@ -13,7 +14,27 @@ class survey(Base):
     employment = Column(Integer)
     likeScience = Column(Boolean)
 
-class test_data(Base):
-    __tablename__ = 'test-user-stats'
+    interviewee_survey = relationship('keystroke_statistic', back_populates = 'interviewee_keystrokes')
+
+class keystroke_statistic(Base):
+    __tablename__ = 'keystroke_statistics'
 
     id = Column(Integer, primary_key = True, index = True)
+    user_id = Column(Integer, ForeignKey('surveys.id'))
+    rollover = Column(Integer)
+    asit = Column(Integer)      #Average Sign Time
+    aspt = Column(Integer)      #Average Space Time
+    atst = Column(Integer)      #Average Tap Space Time
+    att = Column(Integer)       #Average Tap Time
+    ec = Column(Integer)        #Errors Corrected
+    enc = Column(Integer)       #Errors Not Corrected
+    tfs = Column(Integer)       #Taps for sign
+    sch = Column(Integer)       #Sign change
+    so = Column(Integer)        #Sign ommission
+    sa = Column(Integer)        #Sign addtion
+    longAlt = Column(Integer)
+    lostAlt = Column(Integer)
+    invalidCase = Column(Integer)
+    capsLockUsage = Column(Boolean)
+
+    interviewee_keystrokes = relationship('survey', back_populates = 'interviewee_survey')

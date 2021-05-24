@@ -17,8 +17,8 @@ def validate_written_sentence_data(written_sentence: List[str], keystrokes: List
 
     prefiltered_data = calc_levenshtein(written_sentences_split, correct_sentences_split, keystrokes)
 
-    print('written_sentence =>', prefiltered_data['written_sentences'])
-    print('correct_sentence =>', prefiltered_data['correct_sentences'])
+    #print('written_sentence =>', prefiltered_data['written_sentences'])
+    #print('correct_sentence =>', prefiltered_data['correct_sentences'])
 
     return prefiltered_data
 
