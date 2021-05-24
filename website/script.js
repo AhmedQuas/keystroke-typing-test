@@ -33,6 +33,8 @@ sentenceKeystrokes = [];
 globalKeystrokes = [];
 writtenSentences = [];
 getSentences();
+statsSection.classList.remove('d-none');
+makeStatistics();
 
 
 function acceptIntroButtonClick(e){
@@ -171,11 +173,13 @@ function setResponseUserInputWidth(){
     userInput.style.width = sentenceBox.offsetWidth + 20 + "px";
 }
 
-async function getStatistics(){
+async function makeStatistics(){
     try{
      const { data } = await request.get('/statistics')
 
      statistics = data;
+     //console.log(statistics['interviewee']['asit'])
+     
     }
     catch{
         console.error('Error occured during getting data from /statistics');
