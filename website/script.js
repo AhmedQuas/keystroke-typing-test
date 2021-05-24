@@ -80,6 +80,7 @@ function nextButtonClick(e){
         
         // Send survey, test data, end test & show statistics
         sendData();
+        getStatistics();
         alert('Test finished');
     }
     else{
@@ -169,3 +170,14 @@ async function sendData(){
 function setResponseUserInputWidth(){
     userInput.style.width = sentenceBox.offsetWidth + 20 + "px";
 }
+
+async function getStatistics(){
+    try{
+     const { data } = await request.get('/statistics')
+
+     statistics = data;
+    }
+    catch{
+        console.error('Error occured during getting data from /statistics');
+    }
+ }

@@ -6,3 +6,4 @@ test_data/*
 app/helpers/__pycache__/*
 app/keystroke/__pycache__/*
 app/written_sentences/__pycache__/*
+app/keystroke/statistics/__pycache__/*

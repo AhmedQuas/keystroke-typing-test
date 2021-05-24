@@ -4,6 +4,7 @@ from typing import List, Dict
 from fastapi.middleware.cors import CORSMiddleware
 from . import schemas, controller, database, models
 from .helpers import json_deserialize
+from .statistics.statistics import gen_statistics
 
 #API documentation is accessible by /doc or /redoc path
 app = FastAPI()
@@ -47,5 +48,5 @@ def test_data(request: List[Dict], db:Session = Depends(get_db)):
     return {'status':'ok'}
 
 @app.get('/statistics')
-def show_statistics():
-    return {'status':'statistics ok'}
+def show_statistics(db:Session = Depends(get_db)):
+    return gen_statistics(db)
