@@ -49,10 +49,15 @@ def add_data(data: List[Dict], db: Session):
     keystroke_statistics(keystrokes, keystroke_stats)
 
     #print(keystroke_stats)
+
     add_survey(survey, db)
+    
+    query = db.query(models.survey).order_by(models.survey.id.desc())
+
+    user = query.first()
 
     new_keystroke_statistics = models.keystroke_statistic(
-        user_id = 1,
+        user_id = user.id,
         rollover = keystroke_stats.rollover,
         asit = keystroke_stats.asit,
         aspt = keystroke_stats.aspt,
