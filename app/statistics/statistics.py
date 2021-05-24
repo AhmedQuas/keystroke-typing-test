@@ -13,7 +13,10 @@ def gen_statistics(db: Session):
     result['isPolishNative'] = isPolishNative(db)
     result['hand_preferences'] = hand_preference(db)
     result['sex'] = sex(db)
-    
+    result['education'] = education(db)
+    result['employment'] = employment(db)
+    result['likeScience'] = likeScience(db)
+
     return result
 
 def interviewee_statistics(db: Session):
@@ -69,4 +72,42 @@ def sex(db: Session):
     return {
         'women': women,
         'men': men
+    }
+
+def education(db: Session):
+
+    primary = db.query(models.survey).filter(models.survey.education == m_education['primary']).count()
+    high = db.query(models.survey).filter(models.survey.education == m_education['high']).count()
+    student = db.query(models.survey).filter(models.survey.education == m_education['student']).count()
+    graduate = db.query(models.survey).filter(models.survey.education == m_education['graduate']).count()
+    undergraduate = db.query(models.survey).filter(models.survey.education == m_education['undergraduate']).count()
+
+    return {
+        'primary' : primary,
+        'high' : high,
+        'student' : student,
+        'graduate' : graduate,
+        'undergraduate' : undergraduate
+    }
+
+def employment(db: Session):
+
+    unemployed = db.query(models.survey).filter(models.survey.employment == m_employment['unemployed']).count()
+    withcomputer = db.query(models.survey).filter(models.survey.employment == m_employment['withcomputer']).count()
+    withoutcomputer = db.query(models.survey).filter(models.survey.employment == m_employment['withoutcomputer']).count()
+
+    return {
+        'unemployed': unemployed,
+        'withcomputer': withcomputer,
+        'withoutcomputer': withoutcomputer
+    }
+
+def likeScience(db: Session):
+
+    yes = db.query(models.survey).filter(models.survey.likeScience == m_likeScience['yes']).count()
+    no = db.query(models.survey).filter(models.survey.likeScience == m_likeScience['no']).count()
+
+    return {
+        'yes': yes,
+        'no': no
     }
