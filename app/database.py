@@ -6,7 +6,7 @@ from sqlalchemy.orm import sessionmaker
 db_url = 'mysql+pymysql://{user}:{passwd}@{db_host}/{dbname}?charset=utf8mb4'.format(
     user='',
     passwd='',
-    db_host='',
+    db_host='mariadb',
     dbname=''
     )
 
