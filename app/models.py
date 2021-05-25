@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
+from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, Float
 from .database import Base
 from sqlalchemy.orm import relationship
 
@@ -21,20 +21,20 @@ class keystroke_statistic(Base):
 
     id = Column(Integer, primary_key = True, index = True)
     user_id = Column(Integer, ForeignKey('surveys.id'))
-    rollover = Column(Integer)
-    asit = Column(Integer)      #Average Sign Time
-    aspt = Column(Integer)      #Average Space Time
-    atst = Column(Integer)      #Average Tap Space Time
-    att = Column(Integer)       #Average Tap Time
-    ec = Column(Integer)        #Errors Corrected
-    enc = Column(Integer)       #Errors Not Corrected
-    tfs = Column(Integer)       #Taps for sign
-    sch = Column(Integer)       #Sign change
-    so = Column(Integer)        #Sign ommission
-    sa = Column(Integer)        #Sign addtion
-    longAlt = Column(Integer)
-    lostAlt = Column(Integer)
-    invalidCase = Column(Integer)
+    rollover = Column(Float)
+    asit = Column(Integer)          #Average Sign Time
+    aspt = Column(Integer)          #Average Space Time
+    atst = Column(Integer)          #Average Tap Space Time
+    att = Column(Float)             #Average Tap Time
+    tfs = Column(Integer)           #Taps for sign
     capsLockUsage = Column(Boolean)
+    ec = Column(Float)              #Errors Corrected
+    enc = Column(Float)             #Errors Not Corrected
+    sch = Column(Float)             #Sign change
+    so = Column(Float)              #Sign ommission
+    sa = Column(Float)              #Sign addtion
+    longAlt = Column(Float)
+    lostAlt = Column(Float)
+    invalidCase = Column(Float)
 
     interviewee_keystrokes = relationship('survey', back_populates = 'interviewee_survey')
