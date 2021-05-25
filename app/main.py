@@ -30,7 +30,7 @@ def get_test_data():
     return {'sentences': [
         'Wylej na patelnię tylko tyle ciasta, by masa przykryła powierzchnię patelni.',
         'Tutaj może Ci się przydać płaska łopatka do przewracania naleśników.',
-        'Zabezpiecz wąż, aby nie przemieszczał się podczas pracy urządzenia.',
+        #'Zabezpiecz wąż, aby nie przemieszczał się podczas pracy urządzenia.',
         #'Wciśnij przycisk WIR taką ilość razy, aby wybrać żądaną ilość obrotów.',
         #'Wśród gimnazjalistów przeprowadzono ankietę na temat ich zainteresowań',
         #'Ilu uczniów brało udział w corocznej ankiecie?',

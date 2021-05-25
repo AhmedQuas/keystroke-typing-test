@@ -4,6 +4,7 @@ const nextButton = document.getElementById('next-button');
 const userInput = document.getElementById('user-input');
 const sentenceBox = document.getElementById('sentence');
 const progressBar = document.getElementById('progress-bar');
+const funnyText = document.getElementById('funny-text');
 
 const introSection = document.getElementById('intro-section');
 const surveySection = document.getElementById('survey-section'); 
@@ -15,7 +16,7 @@ const request = axios.create({
 })
 
 check = [acceptIntroButton, acceptSurveyButton, nextButton, userInput, sentenceBox, progressBar,
-        introSection, surveySection, typingSection, statsSection];
+        funnyText, introSection, surveySection, typingSection, statsSection];
 
 if (check.includes(null)){
     console.error('Some of the required items are missing')
@@ -32,8 +33,10 @@ buttons = [];
 sentenceKeystrokes = [];
 globalKeystrokes = [];
 writtenSentences = [];
+sentenceQueue = [];
+additional_sentences = 0;
 getSentences();
-statsSection.classList.remove('d-none');
+//statsSection.classList.remove('d-none');
 makeStatistics();
 
 
@@ -53,6 +56,7 @@ function acceptSurveyButtonClick(e){
         type:'acceptSurvey',
         timestamp:e.timeStamp
     });
+    sentenceQueue.push(0)
     sentenceBox.innerHTML = sentences[0];
     progressBar.innerHTML = "1/" + sentences.length; 
     
@@ -71,7 +75,17 @@ function nextButtonClick(e){
     len = globalKeystrokes.push(sentenceKeystrokes);
     writtenSentences.push(userInput.value);
     console.log(len);
+
+    // if data do not pass validation
+    if (!validate_data(userInput.value, sentences[len-1])){
+        additional_sentences += 1
+        index = sentences.push(sentences[len-1])
+        funnyText.innerHTML = "Jakiś śmieszny tekst +" + additional_sentences;
+        //console.log('Karne zdanie');
+    }
+
     userInput.value = '';
+
     sentenceKeystrokes = [];
 
     if (len == sentences.length){
@@ -87,6 +101,7 @@ function nextButtonClick(e){
     }
     else{
         // Provide next sentence
+        sentenceQueue.push(sentences.indexOf(sentences[len]));
         sentenceBox.innerHTML = sentences[len];
         progressBar.innerHTML = len + 1 + "/" + sentences.length;
         setResponseUserInputWidth();
@@ -149,6 +164,7 @@ async function getSentences(){
 
 async function sendData(){
     
+    //console.log(sentenceQueue);
     survey = surveyJsonFromat();
     
     try{
@@ -156,7 +172,8 @@ async function sendData(){
             {
             'survey': survey,
             'keystrokes': globalKeystrokes,
-            'written-sentences': writtenSentences
+            'written-sentences': writtenSentences,
+            'sentenceQueue': sentenceQueue
             }
         ]);
 
@@ -184,4 +201,24 @@ async function makeStatistics(){
     catch{
         console.error('Error occured during getting data from /statistics');
     }
+ }
+
+ function validate_data(correctSentence, userSentence){
+
+    console.log('validate_data')
+    correctWords = correctSentence.split(" ");
+    userWords = userSentence.split(" ");
+
+    if(correctWords.length != userWords.length){
+        return false;
+    }
+
+    for(i=0; i < correctWords.length; i++){
+        distance = levenshtein_distance(correctWords[i], userWords[i]);
+        if(distance > 3){
+            return false;
+        }
+    }
+
+    return true;
  }
