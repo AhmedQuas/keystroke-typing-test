@@ -33,9 +33,10 @@ buttons = [];
 sentenceKeystrokes = [];
 globalKeystrokes = [];
 writtenSentences = [];
-sentenceQueue = [];
+additionalSentenceQueue = [];
 additional_sentences = 0;
 getSentences();
+//Comment line below to see only statistics
 //statsSection.classList.remove('d-none');
 makeStatistics();
 
@@ -56,7 +57,6 @@ function acceptSurveyButtonClick(e){
         type:'acceptSurvey',
         timestamp:e.timeStamp
     });
-    sentenceQueue.push(0)
     sentenceBox.innerHTML = sentences[0];
     progressBar.innerHTML = "1/" + sentences.length; 
     
@@ -74,12 +74,13 @@ function nextButtonClick(e){
 
     len = globalKeystrokes.push(sentenceKeystrokes);
     writtenSentences.push(userInput.value);
-    console.log(len);
+    //console.log(len);
 
     // if data do not pass validation
     if (!validate_data(userInput.value, sentences[len-1])){
         additional_sentences += 1
-        index = sentences.push(sentences[len-1])
+        additionalSentenceQueue.push(sentences.indexOf(sentences[len-1]));
+        sentences.push(sentences[len-1])
         funnyText.innerHTML = "Jakiś śmieszny tekst +" + additional_sentences;
         //console.log('Karne zdanie');
     }
@@ -101,7 +102,6 @@ function nextButtonClick(e){
     }
     else{
         // Provide next sentence
-        sentenceQueue.push(sentences.indexOf(sentences[len]));
         sentenceBox.innerHTML = sentences[len];
         progressBar.innerHTML = len + 1 + "/" + sentences.length;
         setResponseUserInputWidth();
@@ -164,7 +164,7 @@ async function getSentences(){
 
 async function sendData(){
     
-    //console.log(sentenceQueue);
+    console.log(additionalSentenceQueue);
     survey = surveyJsonFromat();
     
     try{
@@ -173,7 +173,7 @@ async function sendData(){
             'survey': survey,
             'keystrokes': globalKeystrokes,
             'written-sentences': writtenSentences,
-            'sentenceQueue': sentenceQueue
+            'additionalSentenceQueue': additionalSentenceQueue
             }
         ]);
 

@@ -8,12 +8,12 @@ import pprint, json
 import Levenshtein
 
 
-def validate_written_sentence_data(written_sentence: List[str], keystrokes: List[schemas.keystroke]):
+def validate_written_sentence_data(written_sentence: List[str], keystrokes: List[schemas.keystroke], additional_sentence_queue:List[int]):
     """
         Register sanitize function & validation checks inside this function
     """
     written_sentences_split = helpers.sentences_word_split(written_sentence)
-    correct_sentences_split = helpers.get_test_sentence()
+    correct_sentences_split = helpers.get_test_sentence(additional_sentence_queue)
 
     prefiltered_data = calc_levenshtein(written_sentences_split, correct_sentences_split, keystrokes)
 

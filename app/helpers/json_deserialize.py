@@ -31,9 +31,14 @@ def data_deserialize(request: List[Dict]):
     #Deserialization of written sentences
     written_sentences_dict = request[0]['written-sentences']
 
+    additional_sentence_queue = request[0]['additionalSentenceQueue']
+
+    #print(additional_sentence_queue)
+
     return {
         'survey': survey_object,
         'keystrokes': keystrokes,
-        'written_sentences': written_sentences_dict
+        'written_sentences': written_sentences_dict,
+        'additional_sentence_queue': additional_sentence_queue
     }
     

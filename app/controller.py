@@ -33,13 +33,15 @@ def add_data(data: List[Dict], db: Session):
     survey = data['survey']
     keystrokes = data['keystrokes']
     written_sentences = data['written_sentences']
+    additional_sentence_queue = data['additional_sentence_queue']
 
-    data=validate_written_sentence_data(written_sentences, keystrokes)
+    # Return all 10 sentences that will be processed
+    data=validate_written_sentence_data(written_sentences, keystrokes, additional_sentence_queue)
     
     keystrokes = data['keystrokes']
     correct_sentences = data['correct_sentences']
     written_sentences = data['written_sentences']
-    
+
     validate_keystroke_data(keystrokes)
 
     keystroke_stats = schemas.keystroke_stats()

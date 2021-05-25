@@ -26,7 +26,7 @@ def sentences_word_split(sentences: List[str]):
 
     return result
 
-def get_test_sentence():
+def get_test_sentence(additional_sentence_queue: List[int]):
     """
         Make API request to /sentences to get correct words
     """
@@ -35,6 +35,9 @@ def get_test_sentence():
     json_data = json.loads(response.text)
 
     written_sentences_dict = json_data['sentences']
+
+    for index in additional_sentence_queue:
+        written_sentences_dict.append(written_sentences_dict[index])
     
     written_sentences = sentences_word_split(written_sentences_dict)
     #print('api:',written_sentences)
