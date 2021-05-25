@@ -4,6 +4,8 @@ services:
 
   python-fastapi:
     build: .
+    depends_on:
+      - mariadb
     ports:
       - 80:80
     volumes:
