@@ -1,8 +1,6 @@
-from enum import Enum
-
-# Database enum mapper
+# Database mappers
 # Following best practises it should be done using relationships in db
-# But due to increase speed of operations it is done by enum mapper
+# But due to increase speed of operations it is done by mapper
 
 
 m_isPolishNative = {

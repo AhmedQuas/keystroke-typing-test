@@ -24,6 +24,9 @@ def gen_statistics(db: Session):
     result['ec_chart'] = ec_chart(db)
     result['enc_chart'] = enc_chart(db)
     result['capsLockUsage_chart'] = capsLockUsage_chart(db)
+    result['science_vs_human_asit'] = science_vs_human_asit(db)
+    result['left_vs_right_hand_asit'] = left_vs_right_hand_asit(db)
+    result['age_vs_enc'] = age_vs_enc(db)
 
     return result
 
