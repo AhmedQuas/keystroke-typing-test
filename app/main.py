@@ -32,7 +32,7 @@ def get_test_data():
         'Tutaj może Ci się przydać płaska łopatka do przewracania naleśników.',
         #'Zabezpiecz wąż, aby nie przemieszczał się podczas pracy urządzenia.',
         #'Wciśnij przycisk WIR taką ilość razy, aby wybrać żądaną ilość obrotów.',
-        #'Wśród gimnazjalistów przeprowadzono ankietę na temat ich zainteresowań',
+        #'Wśród gimnazjalistów przeprowadzono ankietę na temat ich zainteresowań.',
         #'Ilu uczniów brało udział w corocznej ankiecie?',
         #'Jeśli wejdziesz między wrony, musisz krakać tak jak one.',
         #'Lepszy w domu groch, kapusta niż na wojnie kura tłusta.',

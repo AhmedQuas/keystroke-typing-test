@@ -4,7 +4,7 @@ from .survey_statistics import *
 
 def gen_statistics(db: Session):
     """
-    
+        Generate cumulative statistics
     """
 
     result = {}
@@ -16,10 +16,14 @@ def gen_statistics(db: Session):
     result['education'] = education(db)
     result['employment'] = employment(db)
     result['likeScience'] = likeScience(db)
+    result['age'] = age(db)
 
     return result
 
 def interviewee_statistics(db: Session):
+    """
+        Return interviewee specific statistics
+    """
 
     interviewee_id = db.query(models.survey).order_by(models.survey.id.desc()).first().id
     
