@@ -133,3 +133,98 @@ def vs_plot(x_axis, y_axis, db: Session):
 def age_vs_enc(db: Session):
 
     return vs_plot(models.survey.age, models.keystroke_statistic.enc, db)
+
+def age_vs_asit(db: Session):
+
+    return vs_plot(models.survey.age, models.keystroke_statistic.asit, db)
+
+def lang_enc(db: Session):
+
+    survey = models.survey
+    keystroke = models.keystroke_statistic
+
+    polish = db.query(func.avg(keystroke.enc)).filter(keystroke.user_id == survey.id).filter(survey.isPolishNative == m_isPolishNative['yes']).first()
+
+    not_polish = db.query(func.avg(keystroke.enc)).filter(keystroke.user_id == survey.id).filter(survey.isPolishNative == m_isPolishNative['no']).first()
+
+    return{
+        'polish': round(polish[0], 1),
+        'not_polish': round(not_polish[0], 1)
+    }
+
+def lang_ec(db: Session):
+
+    survey = models.survey
+    keystroke = models.keystroke_statistic
+
+    polish = db.query(func.avg(keystroke.ec)).filter(keystroke.user_id == survey.id).filter(survey.isPolishNative == m_isPolishNative['yes']).first()
+
+    not_polish = db.query(func.avg(keystroke.ec)).filter(keystroke.user_id == survey.id).filter(survey.isPolishNative == m_isPolishNative['no']).first()
+
+    return{
+        'polish': round(polish[0], 1),
+        'not_polish': round(not_polish[0], 1)
+    }
+
+def so_sa_sch(db: Session):
+
+    sa = db.query(func.sum(models.keystroke_statistic.sa)).first()[0]
+
+    so = db.query(func.sum(models.keystroke_statistic.so)).first()[0]
+
+    sch = db.query(func.sum(models.keystroke_statistic.sch)).first()[0]
+
+    total = sa + so + sch
+
+    sa_ratio = round(sa/total, 1)
+    sch_ratio = round(sch/total, 1)
+
+    return{
+        'sa': sa_ratio,
+        'so': 1 - sa_ratio - sch_ratio,
+        'sch': sch_ratio
+    }
+
+def long_lostalt_invalidcase_other(db: Session):
+
+    lostAlt = db.query(func.sum(models.keystroke_statistic.lostAlt)).first()[0]
+
+    longAlt = db.query(func.sum(models.keystroke_statistic.longAlt)).first()[0]
+
+    invalidCase = db.query(func.sum(models.keystroke_statistic.invalidCase)).first()[0]
+
+    sch = db.query(func.sum(models.keystroke_statistic.sch)).first()[0]
+
+    lostAlt_ratio = round(lostAlt/sch, 1)
+    longAlt_ratio = round(longAlt/sch, 1)
+    invalidCase_ratio = round(invalidCase/sch, 1)
+
+    return {
+        'lostAlt': lostAlt_ratio,
+        'longAlt': longAlt_ratio,
+        'invalidCase': invalidCase_ratio,
+        'other': 1 - lostAlt_ratio - longAlt_ratio - invalidCase_ratio
+    }
+
+def education_vs_asit(db: Session):
+
+    survey = models.survey
+    keystroke = models.keystroke_statistic
+
+    primary = db.query(func.avg(keystroke.asit)).filter(keystroke.user_id == survey.id).filter(survey.education == m_education['primary']).first()
+
+    high = db.query(func.avg(keystroke.asit)).filter(keystroke.user_id == survey.id).filter(survey.education == m_education['high']).first()
+
+    student = db.query(func.avg(keystroke.asit)).filter(keystroke.user_id == survey.id).filter(survey.education == m_education['student']).first()
+
+    graduate = db.query(func.avg(keystroke.asit)).filter(keystroke.user_id == survey.id).filter(survey.education == m_education['graduate']).first()
+
+    undergraduate = db.query(func.avg(keystroke.asit)).filter(keystroke.user_id == survey.id).filter(survey.education == m_education['undergraduate']).first()
+
+    return {
+        'primary': primary[0],
+        'high': high[0],
+        'student': student[0],
+        'graduate': graduate[0],
+        'undergraduate': undergraduate[0]
+    }

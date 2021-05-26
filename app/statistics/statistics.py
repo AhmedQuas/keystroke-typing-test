@@ -27,6 +27,12 @@ def gen_statistics(db: Session):
     result['science_vs_human_asit'] = science_vs_human_asit(db)
     result['left_vs_right_hand_asit'] = left_vs_right_hand_asit(db)
     result['age_vs_enc'] = age_vs_enc(db)
+    result['age_vs_asit'] = age_vs_asit(db)
+    result['lang_enc'] = lang_enc(db)
+    result['lang_ec'] = lang_ec(db)
+    result['so_sa_sch'] = so_sa_sch(db)
+    result['long_lostalt_invalidcase_other'] = long_lostalt_invalidcase_other(db)
+    result['education_vs_asit'] = education_vs_asit(db)
 
     return result
 
