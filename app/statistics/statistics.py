@@ -1,6 +1,7 @@
 from sqlalchemy.orm import Session
 from .. import models
 from .survey_statistics import *
+from .keystroke_statistics import *
 
 def gen_statistics(db: Session):
     """
@@ -17,6 +18,12 @@ def gen_statistics(db: Session):
     result['employment'] = employment(db)
     result['likeScience'] = likeScience(db)
     result['age'] = age(db)
+
+    result['rollover_chart'] = rollover_chart(db)
+    result['asit_chart'] = asit_chart(db)
+    result['ec_chart'] = ec_chart(db)
+    result['enc_chart'] = enc_chart(db)
+    result['capsLockUsage_chart'] = capsLockUsage_chart(db)
 
     return result
 

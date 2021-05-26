@@ -21,7 +21,7 @@ class keystroke_statistic(Base):
 
     id = Column(Integer, primary_key = True, index = True)
     user_id = Column(Integer, ForeignKey('surveys.id'))
-    rollover = Column(Float)
+    rollover = Column(Integer)
     asit = Column(Integer)          #Average Sign Time
     aspt = Column(Integer)          #Average Space Time
     atst = Column(Integer)          #Average Tap Space Time
