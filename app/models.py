@@ -28,13 +28,13 @@ class keystroke_statistic(Base):
     att = Column(Float)             #Average Tap Time
     tfs = Column(Integer)           #Taps for sign
     capsLockUsage = Column(Boolean)
-    ec = Column(Float)              #Errors Corrected
-    enc = Column(Float)             #Errors Not Corrected
-    sch = Column(Float)             #Sign change
-    so = Column(Float)              #Sign ommission
-    sa = Column(Float)              #Sign addtion
-    longAlt = Column(Float)
-    lostAlt = Column(Float)
-    invalidCase = Column(Float)
+    ec = Column(Integer)              #Errors Corrected
+    enc = Column(Integer)             #Errors Not Corrected
+    sch = Column(Integer)             #Sign change
+    so = Column(Integer)              #Sign ommission
+    sa = Column(Integer)              #Sign addtion
+    longAlt = Column(Integer)
+    lostAlt = Column(Integer)
+    invalidCase = Column(Integer)
 
     interviewee_keystrokes = relationship('survey', back_populates = 'interviewee_survey')
