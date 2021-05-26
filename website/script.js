@@ -37,7 +37,7 @@ additionalSentenceQueue = [];
 additional_sentences = 0;
 getSentences();
 //Comment line below to see only statistics
-//statsSection.classList.remove('d-none');
+statsSection.classList.remove('d-none');
 makeStatistics();
 
 
@@ -195,8 +195,61 @@ async function makeStatistics(){
      const { data } = await request.get('/statistics')
 
      statistics = data;
-     //console.log(statistics['interviewee']['asit'])
-     
+    
+     hand_pie( 
+        statistics['hand_preferences']['right_hand'],
+        statistics['hand_preferences']['left_hand']);
+
+     sex_pie(
+        statistics['sex']['men'],
+        statistics['sex']['women']);
+
+     native_pie(
+        statistics['isPolishNative']['yes'],
+        statistics['isPolishNative']['no']);
+
+    education_pie(
+        statistics['education']['primary'],
+        statistics['education']['high'],
+        statistics['education']['student'],
+        statistics['education']['graduate'],
+        statistics['education']['undergraduate']);
+    
+    employment_pie(
+        statistics['employment']['unemployed'],
+        statistics['employment']['withcomputer'],
+        statistics['employment']['withoutcomputer']);
+
+    science_lovers_pie(
+        statistics['likeScience']['yes'],
+        statistics['likeScience']['no']);
+
+    age_chart(
+        statistics['age']['label'],
+        statistics['age']['amount']); 
+    
+    rollover_chart(
+        statistics['rollover_chart']['rollover'],
+        statistics['rollover_chart']['no_rollover']);
+
+    asit_chart(
+        statistics['asit_chart']['label'],
+        statistics['asit_chart']['amount']); 
+
+    ec_chart(
+        statistics['ec_chart']['label'],
+        statistics['ec_chart']['amount']); 
+
+    enc_chart(
+        statistics['enc_chart']['label'],
+        statistics['enc_chart']['amount']); 
+        
+    caps_usage_chart(
+        statistics['capsLockUsage_chart']['capsLock'],
+        statistics['capsLockUsage_chart']['shift']); 
+    
+
+
     }
     catch{
         console.error('Error occured during getting data from /statistics');
