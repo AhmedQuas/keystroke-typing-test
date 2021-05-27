@@ -246,9 +246,49 @@ async function makeStatistics(){
         
     caps_usage_chart(
         statistics['capsLockUsage_chart']['capsLock'],
-        statistics['capsLockUsage_chart']['shift']); 
-    
+        statistics['capsLockUsage_chart']['shift']);
 
+    science_human_asit_chart(
+        statistics['science_vs_human_asit']['likeScience'],
+        statistics['science_vs_human_asit']['likeHuman']); 
+
+    hand_asit_chart(
+        statistics['left_vs_right_hand_asit']['right'],
+        statistics['left_vs_right_hand_asit']['left']); 
+
+    age_vs_enc_chart(
+        statistics['age_vs_enc']['label'],
+        statistics['age_vs_enc']['amount']); 
+    
+    age_vs_asit_chart(
+        statistics['age_vs_asit']['label'],
+        statistics['age_vs_asit']['amount']);
+    
+    lang_enc_chart(
+        statistics['lang_enc']['polish'],
+        statistics['lang_enc']['not_polish']); 
+
+    lang_ec_chart(
+        statistics['lang_ec']['polish'],
+        statistics['lang_ec']['not_polish']); 
+
+    so_sa_sch_chart(
+        statistics['so_sa_sch']['sa'],
+        statistics['so_sa_sch']['so'],
+        statistics['so_sa_sch']['sch']);  
+
+    long_lostalt_invalidcase_other_chart(
+        statistics['long_lostalt_invalidcase_other']['lostAlt'],
+        statistics['long_lostalt_invalidcase_other']['longAlt'],
+        statistics['long_lostalt_invalidcase_other']['invalidCase'],
+        statistics['long_lostalt_invalidcase_other']['other']); 
+        
+    education_asit_chart(
+        statistics['education_vs_asit']['primary'],
+        statistics['education_vs_asit']['high'],
+        statistics['education_vs_asit']['student'],
+        statistics['education_vs_asit']['graduate'],
+        statistics['education_vs_asit']['undergraduate']); 
 
     }
     catch{

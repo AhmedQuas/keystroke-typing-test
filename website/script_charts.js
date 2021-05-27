@@ -368,6 +368,14 @@ function age_chart(label, amount){
    }]
  },
  options:{
+  scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero: true
+            }
+        }]
+    
+},
    title:{
      display:true,
      text:'Wiek wśród uczestników',
@@ -425,7 +433,7 @@ function rollover_chart(rollover, norollover){
  options:{
    title:{
      display:true,
-     text:'Czy występuje rollover?',
+     text:'Występowanie rollover`u',
      fontSize:25
    },
    legend:{
@@ -476,6 +484,14 @@ function asit_chart(label, amount){
    }]
  },
  options:{
+  scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero: true
+            }
+        }]
+    
+},
    title:{
      display:true,
      text:'Średni czas znaku',
@@ -529,6 +545,14 @@ function ec_chart(label, amount){
    }]
  },
  options:{
+  scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero: true
+            }
+        }]
+    
+},
    title:{
      display:true,
      text:'Poprawione błędy',
@@ -582,6 +606,14 @@ function enc_chart(label, amount){
    }]
  },
  options:{
+  scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero: true
+            }
+        }]
+    
+},
    title:{
      display:true,
      text:'Niepoprawione błędy',
@@ -638,6 +670,509 @@ function caps_usage_chart(caps, shift){
    title:{
      display:true,
      text:'W jaki sposób uczestnicy piszą wielkie litery?',
+     fontSize:25
+   },
+   legend:{
+     display:true,
+     position:'right',
+     labels:{
+       fontColor:'#000'
+     }
+   },
+   layout:{
+     padding:{
+       left:50,
+       right:0,
+       bottom:0,
+       top:0
+     }
+   },
+   tooltips:{
+     enabled:true
+   }
+ }
+});
+}
+function science_human_asit_chart(science, human){
+  let myChart13 = document.getElementById('myChart13').getContext('2d');
+   let CapsChart = new Chart(myChart13, {
+ type:'pie', //doughnut
+ data:{
+   labels:[
+   'Ścisłowcy',
+   'Humaniści'
+   ],
+
+   datasets:[{
+     label:'Średnia prędkość znaku',
+     data:[
+      science,
+      human
+     ],
+     backgroundColor:[
+      'rgba(134, 28, 201, 0.6)',
+      'rgba(234, 223, 17, 0.6)'     
+     ],
+     borderWidth:1,
+     borderColor:'#777',
+     hoverBorderWidth:3,
+     hoverBorderColor:'#000'
+   }]
+ },
+ options:{
+   title:{
+     display:true,
+     text:'Średnia prędkość znaku a ukierunkowanie',
+     fontSize:25
+   },
+   legend:{
+     display:true,
+     position:'right',
+     labels:{
+       fontColor:'#000'
+     }
+   },
+   layout:{
+     padding:{
+       left:50,
+       right:0,
+       bottom:0,
+       top:0
+     }
+   },
+   tooltips:{
+     enabled:true
+   }
+ }
+});
+}
+function hand_asit_chart(right, left){
+  let myChart14 = document.getElementById('myChart14').getContext('2d');
+   let CapsChart = new Chart(myChart14, {
+ type:'pie', //doughnut
+ data:{
+   labels:[
+   'Praworęczni',
+   'Leworęczni'
+   ],
+
+   datasets:[{
+     label:'Średnia prędkość znaku',
+     data:[
+      right,
+      left
+     ],
+     backgroundColor:[
+      'rgba(51, 233, 167, 0.6)',
+      'rgba(231, 167, 89, 0.6)'     
+     ],
+     borderWidth:1,
+     borderColor:'#777',
+     hoverBorderWidth:3,
+     hoverBorderColor:'#000'
+   }]
+ },
+ options:{
+   title:{
+     display:true,
+     text:'Średnia prędkość znaku a ręka wiodąca',
+     fontSize:25
+   },
+   legend:{
+     display:true,
+     position:'right',
+     labels:{
+       fontColor:'#000'
+     }
+   },
+   layout:{
+     padding:{
+       left:50,
+       right:0,
+       bottom:0,
+       top:0
+     }
+   },
+   tooltips:{
+     enabled:true
+   }
+ }
+});
+}
+function age_vs_enc_chart(label, amount){
+  let myChart15 = document.getElementById('myChart15').getContext('2d');
+   let AsitChart = new Chart(myChart15, {
+ type:'bar', //doughnut
+ data:{
+   labels:
+  label
+   ,
+
+   datasets:[{
+     label: 'Ilość poprawionych błędów',
+     data:
+     amount
+     ,
+     backgroundColor:[
+      'rgba(170, 255, 89, 0.6)',
+      'rgba(89, 132, 255, 0.6)',
+      'rgba(255, 89, 89, 0.6)'
+     
+     ],
+     borderWidth:1,
+     borderColor:'#777',
+     hoverBorderWidth:3,
+     hoverBorderColor:'#000'
+   }]
+ },
+ options:{
+  scales: {
+        yAxes: [{
+            ticks: {
+                beginAtZero: true
+            }
+        }]
+    
+},
+   title:{
+     display:true,
+     text:'Ilość poprawionych błędów a wiek',
+     fontSize:25
+   },
+   legend:{
+     display:false,
+     position:'right',
+     labels:{
+       fontColor:'#000'
+     }
+   },
+   layout:{
+     padding:{
+       left:50,
+       right:0,
+       bottom:0,
+       top:0
+     }
+   },
+   tooltips:{
+     enabled:true
+   }
+ }
+});
+}
+function age_vs_asit_chart(label, amount){
+  let myChart16 = document.getElementById('myChart16').getContext('2d');
+   let AsitChart = new Chart(myChart16, {
+ type:'line', //doughnut
+ data:{
+   labels:
+  label
+   ,
+
+   datasets:[{
+     label: 'Średni czas znaku [ms]',
+     data:
+     amount
+     ,
+     backgroundColor:[
+      'rgba(77, 108, 67, 1)',
+      'rgba(201, 230, 30, 0.6)',
+      'rgba(2, 13, 155, 0.6)'
+     
+     ],
+     fill: false,
+     borderColor: 'rgb(75, 192, 192)',
+     tension: 0.1,
+     hoverBorderWidth:3,
+     hoverBorderColor:'#000'
+   }]
+ },
+    options:{
+   title:{
+     display:true,
+     text:'Średni czas znaku a wiek',
+     fontSize:25
+   },
+   legend:{
+     display:false,
+     position:'right',
+     labels:{
+       fontColor:'#000'
+     }
+   },
+   layout:{
+     padding:{
+       left:50,
+       right:0,
+       bottom:0,
+       top:0
+     }
+   },
+   tooltips:{
+     enabled:true
+   }
+ }
+});
+}
+function lang_enc_chart(polish, notpolish){
+  let myChart17 = document.getElementById('myChart17').getContext('2d');
+   let CapsChart = new Chart(myChart17, {
+ type:'pie', //doughnut
+ data:{
+   labels:[
+   'Polski',
+   'Inny'
+   ],
+
+   datasets:[{
+     label:'Niepoprawione błędy',
+     data:[
+      polish,
+      notpolish
+     ],
+     backgroundColor:[
+      'rgba(118, 123, 116, 0.6)',
+      'rgba(192, 140, 231, 0.6)'     
+     ],
+     borderWidth:1,
+     borderColor:'#777',
+     hoverBorderWidth:3,
+     hoverBorderColor:'#000'
+   }]
+ },
+ options:{
+   title:{
+     display:true,
+     text:'Wpływ języka ojczystego na ilość niepoprawionych błędów',
+     fontSize:25
+   },
+   legend:{
+     display:true,
+     position:'right',
+     labels:{
+       fontColor:'#000'
+     }
+   },
+   layout:{
+     padding:{
+       left:50,
+       right:0,
+       bottom:0,
+       top:0
+     }
+   },
+   tooltips:{
+     enabled:true
+   }
+ }
+});
+}
+function lang_ec_chart(polish, notpolish){
+  let myChart18 = document.getElementById('myChart18').getContext('2d');
+   let CapsChart = new Chart(myChart18, {
+ type:'pie', //doughnut
+ data:{
+   labels:[
+   'Polski',
+   'Inny'
+   ],
+
+   datasets:[{
+     label:'Poprawione błędy',
+     data:[
+      polish,
+      notpolish
+     ],
+     backgroundColor:[
+      'rgba(226, 150, 40, 0.6)',
+      'rgba(40, 208, 226, 0.6)'     
+     ],
+     borderWidth:1,
+     borderColor:'#777',
+     hoverBorderWidth:3,
+     hoverBorderColor:'#000'
+   }]
+ },
+ options:{
+   title:{
+     display:true,
+     text:'Wpływ języka ojczystego na ilość poprawionych błędów',
+     fontSize:25
+   },
+   legend:{
+     display:true,
+     position:'right',
+     labels:{
+       fontColor:'#000'
+     }
+   },
+   layout:{
+     padding:{
+       left:50,
+       right:0,
+       bottom:0,
+       top:0
+     }
+   },
+   tooltips:{
+     enabled:true
+   }
+ }
+});
+}
+function so_sa_sch_chart(so,sa,sch){
+  let myChart19 = document.getElementById('myChart19').getContext('2d');
+   let CapsChart = new Chart(myChart19, {
+ type:'doughnut',
+ data:{
+   labels:[
+   'Pominięcie znaku',
+   'Dodanie znaku',
+   'Zamiana znaku'
+   ],
+
+   datasets:[{
+     label:'Niepoprawione błędy',
+     data:[
+      so,
+      sa,
+      sch
+     ],
+     backgroundColor:[
+      'rgba(150, 226, 40, 0.6)',
+      'rgba(226, 115, 40, 0.6)',
+      'rgba(0, 29, 252, 0.6)'    
+     ],
+     borderWidth:1,
+     borderColor:'#777',
+     hoverBorderWidth:3,
+     hoverBorderColor:'#000'
+   }]
+ },
+ options:{
+   title:{
+     display:true,
+     text:'Rodzaje niepoprawionych błędów wśród uczestników',
+     fontSize:25
+   },
+   legend:{
+     display:true,
+     position:'right',
+     labels:{
+       fontColor:'#000'
+     }
+   },
+   layout:{
+     padding:{
+       left:50,
+       right:0,
+       bottom:0,
+       top:0
+     }
+   },
+   tooltips:{
+     enabled:true
+   }
+ }
+});
+}
+function long_lostalt_invalidcase_other_chart(lostAlt, longAlt, invalidCase, other){
+  let myChart20 = document.getElementById('myChart20').getContext('2d');
+   let CapsChart = new Chart(myChart20, {
+ type:'doughnut',
+ data:{
+   labels:[
+   'Pominięcie Alt',
+   'Przedłużenie Alt',
+   'Nieprawidłowa wielkość znaku',
+   'Inne'
+   ],
+
+   datasets:[{
+     label:'Niepoprawione błędy',
+     data:[
+      lostAlt, 
+      longAlt, 
+      invalidCase, 
+      other
+     ],
+     backgroundColor:[
+      'rgba(252, 0, 228, 0.6)',
+      'rgba(0, 252, 150, 0.6)',
+      'rgba(244, 252, 0, 0.6)'    
+     ],
+     borderWidth:1,
+     borderColor:'#777',
+     hoverBorderWidth:3,
+     hoverBorderColor:'#000'
+   }]
+ },
+ options:{
+   title:{
+     display:true,
+     text:'Spooby zamiany znaków wśród uczestników',
+     fontSize:25
+   },
+   legend:{
+     display:true,
+     position:'right',
+     labels:{
+       fontColor:'#000'
+     }
+   },
+   layout:{
+     padding:{
+       left:50,
+       right:0,
+       bottom:0,
+       top:0
+     }
+   },
+   tooltips:{
+     enabled:true
+   }
+ }
+});
+}
+function education_asit_chart(primary, high, student, graduate, undergraduate){
+  let myChart21 = document.getElementById('myChart21').getContext('2d');
+   let CapsChart = new Chart(myChart21, {
+ type:'doughnut',
+ data:{
+   labels:[
+    'Uczeń szkoły podstawowej',
+    'Uczeń szkoły ponadpodstawowej',
+    'Student',
+    'Absolwent uczelni wyższej',
+    'Nie ukończył studiów'
+   ],
+
+   datasets:[{
+     label:'Średni czas znaku',
+     data:[
+      primary, 
+      high, 
+      student, 
+      graduate, 
+      undergraduate
+     ],
+     backgroundColor:[
+      'rgba(0, 176, 252, 0.6)',
+      'rgba(252, 40, 0, 0.7)',
+      'rgba(250, 252, 0, 0.5)',
+      'rgba(218, 0, 252, 0.5)',
+      'rgba(3, 252, 0, 0.5)'   
+     ],
+     borderWidth:1,
+     borderColor:'#777',
+     hoverBorderWidth:3,
+     hoverBorderColor:'#000'
+   }]
+ },
+ options:{
+   title:{
+     display:true,
+     text:'Średni czas znaku a wykształcenie uczestników',
      fontSize:25
    },
    legend:{
