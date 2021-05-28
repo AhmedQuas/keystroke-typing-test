@@ -33,6 +33,9 @@ def gen_statistics(db: Session):
     result['so_sa_sch'] = so_sa_sch(db)
     result['long_lostalt_invalidcase_other'] = long_lostalt_invalidcase_other(db)
     result['education_vs_asit'] = education_vs_asit(db)
+    result['atst_chart'] = atst_chart(db)
+    result['rollover_vs_asit'] = rollover_vs_asit(db)
+    result['rollover_vs_atst'] = rollover_vs_atst(db)
 
     return result
 

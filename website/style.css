@@ -1,6 +1,18 @@
+.header{
+    padding-top: 10vh;
+}
+
 .space{
     margin-top: 10%;
 }
 .survey-category-type{
     margin-left: -1.25rem;
+}
+
+.canvas-d-none{
+    display: none;
+}
+
+div.canvas-div{
+    margin-bottom: 10vh;
 }

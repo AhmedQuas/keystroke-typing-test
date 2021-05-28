@@ -50,6 +50,10 @@ def asit_chart(db: Session):
 
     return hist_plot(models.keystroke_statistic.asit, db)
 
+def atst_chart(db: Session):
+
+    return hist_plot(models.keystroke_statistic.atst, db)
+
 def enc_chart(db: Session):
 
     return hist_plot(models.keystroke_statistic.enc, db)
@@ -137,6 +141,14 @@ def age_vs_enc(db: Session):
 def age_vs_asit(db: Session):
 
     return vs_plot(models.survey.age, models.keystroke_statistic.asit, db)
+
+def rollover_vs_asit(db: Session):
+
+    return vs_plot(models.keystroke_statistic.rollover, models.keystroke_statistic.asit, db)
+
+def rollover_vs_atst(db: Session):
+
+    return vs_plot(models.keystroke_statistic.rollover, models.keystroke_statistic.atst, db)
 
 def lang_enc(db: Session):
 

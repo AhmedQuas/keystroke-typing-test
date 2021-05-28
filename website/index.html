@@ -2,9 +2,9 @@
 <html>
 <head>
     <meta charset='UTF-8' />
+    <link rel="icon" type="image/png" href="img/icon.png"/>
     <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous'>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel='stylesheet' href='style.css'>    
+    <link rel='stylesheet' href='style.css'>
     <script src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js' integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' crossorigin='anonymous'></script>
     <script src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous'></script>
@@ -13,14 +13,18 @@
     
 </head>
 <body>
-    <nav class='nav'>
-        <a class='nav-link active' aria-current='page' href='#'>Active</a>
+    <nav class='container'>
+        <div class='row justify-content-center'>
+            <secton class='col-12 header'>
+                <h1 class='h5 text-center'>Czy 'widać' Cię przez klawiaturę? - Analiza dynamiki naciśnięć klawiszy w różnych grupach społecznych.</h1>
+            </secton>
+            <div class='col-6'>
+                <img class='img-fluid' src='img/logo.png' alt='Logo'/>
+            </div>
+        </div>
     </nav>
     <main class='container'>
         <article class='row justify-content-center'>
-            <secton class='col-12'>
-                <h1 class='h5 text-center'>Czy 'widać' Cię przez klawiaturę? - Analiza dynamiki naciśnięć klawiszy w różnych grupach społecznych.</h1>
-            </secton>
             <secton id='intro-section' class='col-12 intro space'>
                 <div>
                     <h2 class='h5 text-center'>Kilka słów o projecie</h2>
@@ -172,27 +176,71 @@
             <secton id='stats-section' class='col-12 text-center test-statistics d-none space'>
                 <p>Statystyki dotyczące testu</p>
                 <div class="container">
-                    <canvas id="myChart1"></canvas>
-                    <canvas id="myChart2"></canvas>
-                    <canvas id="myChart3"></canvas>
-                    <canvas id="myChart4"></canvas>
-                    <canvas id="myChart5"></canvas>
-                    <canvas id="myChart6"></canvas>
-                    <canvas id="myChart7"></canvas>
-                    <canvas id="myChart8"></canvas>
-                    <canvas id="myChart9"></canvas>
-                    <canvas id="myChart10"></canvas>
-                    <canvas id="myChart11"></canvas>
-                    <canvas id="myChart12"></canvas>
-                    <canvas id="myChart13"></canvas>
-                    <canvas id="myChart14"></canvas>
-                    <canvas id="myChart15"></canvas>
-                    <canvas id="myChart16"></canvas>
-                    <canvas id="myChart17"></canvas>
-                    <canvas id="myChart18"></canvas>
-                    <canvas id="myChart19"></canvas>
-                    <canvas id="myChart20"></canvas>
-                    <canvas id="myChart21"></canvas>
+                    <div class='row'>
+                        <div class="col-6 canvas-div">
+                            <canvas id="myChart1"></canvas>
+                        </div>
+                        <div class="col-6 canvas-d-none canvas-div">
+                            <canvas id="myChart2"></canvas>
+                        </div>
+                        <div class="col-6 canvas-d-none canvas-div">
+                            <canvas id="myChart3"></canvas>
+                        </div>
+                        <div class="col-6 canvas-d-none canvas-div">
+                            <canvas id="myChart4"></canvas>
+                        </div>
+                        <div class="col-6 canvas-d-none canvas-div">
+                            <canvas id="myChart5"></canvas>
+                        </div>
+                        <div class="col-6 canvas-d-none canvas-div">
+                            <canvas id="myChart6"></canvas>
+                        </div>
+                        <div class="col-6 canvas-d-none canvas-div">
+                            <canvas id="myChart7"></canvas>
+                        </div>
+                        <div class="col-6 canvas-div">
+                            <canvas id="myChart8"></canvas>
+                        </div>
+                        <div class="col-6 canvas-div">
+                            <canvas id="myChart9"></canvas>
+                        </div>
+                        <div class="col-6 canvas-div">
+                            <canvas id="myChart10"></canvas>
+                        </div>
+                        <div class="col-6 canvas-div">
+                            <canvas id="myChart11"></canvas>
+                        </div>
+                        <div class="col-6 canvas-div">
+                            <canvas id="myChart13"></canvas>
+                        </div>
+                        <div class="col-6 canvas-div">
+                            <canvas id="myChart12"></canvas>
+                        </div>
+                        <div class="col-6 canvas-d-none canvas-div">
+                            <canvas id="myChart14"></canvas>
+                        </div>
+                        <div class="col-6 canvas-d-none canvas-div">
+                            <canvas id="myChart15"></canvas>
+                        </div>
+                        <div class="col-6 canvas-d-none canvas-div">
+                            <canvas id="myChart16"></canvas>
+                        </div>
+                        <div class="col-6 canvas-d-none canvas-div">
+                            <canvas id="myChart17"></canvas>
+                        </div>
+                        <div class="col-6 canvas-div">
+                            <canvas id="myChart18"></canvas>
+                        </div>
+                        <div class="col-6 canvas-div">
+                            <canvas id="myChart19"></canvas>
+                        </div>
+                        <div class="col-6 canvas-div">
+                            <canvas id="myChart20"></canvas>
+                        </div>
+                        <div class="col-12 canvas-div">
+                            <canvas id="myChart21"></canvas>
+                        </div>
+                    </div>
                 </div>
             </secton>
         </article>
