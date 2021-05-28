@@ -37,8 +37,8 @@ additionalSentenceQueue = [];
 additional_sentences = 0;
 getSentences();
 //Comment line below to see only statistics
-statsSection.classList.remove('d-none');
-makeStatistics();
+//statsSection.classList.remove('d-none');
+
 
 
 function acceptIntroButtonClick(e){
@@ -81,7 +81,7 @@ function nextButtonClick(e){
         additional_sentences += 1
         additionalSentenceQueue.push(sentences.indexOf(sentences[len-1]));
         sentences.push(sentences[len-1])
-        funnyText.innerHTML = "Jakiś śmieszny tekst +" + additional_sentences;
+        funnyText.innerHTML = "To może jeszcze kilka? Bardzo prosimy o " + additional_sentences + " zdania";
         //console.log('Karne zdanie');
     }
 
@@ -180,22 +180,9 @@ async function sendData(){
         if (status !== 201){
             console.error('None 201 response code');    
         }
-    }
-    catch(error){
-        console.error('Error occured during sending test data to /test-data');
-    }
-}
-
-function setResponseUserInputWidth(){
-    userInput.style.width = sentenceBox.offsetWidth + 20 + "px";
-}
-
-async function makeStatistics(){
-    try{
-     const { data } = await request.get('/statistics')
-
-     statistics = data;
     
+        statistics = data;
+
      hand_pie( 
         statistics['hand_preferences']['right_hand'],
         statistics['hand_preferences']['left_hand']);
@@ -263,7 +250,7 @@ async function makeStatistics(){
     age_vs_asit_chart(
         statistics['age_vs_asit']['label'],
         statistics['age_vs_asit']['amount']);
-    
+
     lang_enc_chart(
         statistics['lang_enc']['polish'],
         statistics['lang_enc']['not_polish']); 
@@ -281,8 +268,8 @@ async function makeStatistics(){
         statistics['long_lostalt_invalidcase_other']['lostAlt'],
         statistics['long_lostalt_invalidcase_other']['longAlt'],
         statistics['long_lostalt_invalidcase_other']['invalidCase'],
-        statistics['long_lostalt_invalidcase_other']['other']); 
-        
+        statistics['long_lostalt_invalidcase_other']['other']);
+
     education_asit_chart(
         statistics['education_vs_asit']['primary'],
         statistics['education_vs_asit']['high'],
@@ -302,14 +289,17 @@ async function makeStatistics(){
         statistics['atst_chart']['label'],
         statistics['atst_chart']['amount']);
 
-
     }
-    catch{
-        console.error('Error occured during getting data from /statistics');
+    catch(error){
+        console.error('Error occured during sending test data to /test-data');
     }
- }
+}
 
- function validate_data(correctSentence, userSentence){
+function setResponseUserInputWidth(){
+    userInput.style.width = sentenceBox.offsetWidth + 20 + "px";
+}
+
+function validate_data(correctSentence, userSentence){
 
     console.log('validate_data')
     correctWords = correctSentence.split(" ");
@@ -327,4 +317,4 @@ async function makeStatistics(){
     }
 
     return true;
- }
+}

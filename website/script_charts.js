@@ -960,7 +960,7 @@ function age_vs_asit_chart(label, amount){
   scales: {
       yAxes: [{
           ticks: {
-              beginAtZero: false,
+              beginAtZero: true,
               
           },
       scaleLabel: {
@@ -1341,7 +1341,7 @@ function rollover_asit_chart(label, amount){
   scales: {
       yAxes: [{
           ticks: {
-              beginAtZero: false,
+              beginAtZero: true,
               
           },
       scaleLabel: {
@@ -1412,7 +1412,7 @@ function rollover_atst_chart(label, amount){
   scales: {
       yAxes: [{
           ticks: {
-              beginAtZero: false,
+              beginAtZero: true,
               
           },
       scaleLabel: {
@@ -1452,7 +1452,7 @@ function rollover_atst_chart(label, amount){
  }
 });
 }
-function asit_chart(label, amount){
+function atst_chart(label, amount){
   let myChart24 = document.getElementById('myChart24').getContext('2d');
    let AtstChart = new Chart(myChart24, {
  type:'bar', //doughnut

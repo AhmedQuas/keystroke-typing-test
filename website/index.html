@@ -11,6 +11,9 @@
     <script src='https://unpkg.com/axios/dist/axios.min.js'></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
     
+    <meta property="og:title" content="Czy widać Cię przez klawiaturę?" />
+    <meta property="og:description" content="Platforma do analizy dynamiki naciśnięć klawiszy w różnych grupach społecznych." />
+    <meta property="og:image" content="img/logo.png" />
 </head>
 <body>
     <nav class='container'>
@@ -40,7 +43,7 @@
                         <p>
                             <strong>Bardzo dziękujemy za udział w badaniu i życzymy powodzenia :)</strong>
                         </p>
-                        <p class='text-right'>nazwa zespolu</p>
+                        <p class='text-right'>Typing Boffins</p>
                     </div>
                     <button id='accept-intro-button' type='submit' class='btn btn-primary float-right'>Idziemy dalej!</button>
                 </div>
@@ -148,7 +151,7 @@
                         <br/>
                         <p class='survey-category-type mb-0' for='likeScience'>Wolisz?</p>
                         <input class='form-check-input' type='radio' name='likeScience' id='likeScience' value='1' checked>
-                        <label class='form-check-label' for='unemployment'>
+                        <label class='form-check-label' for='likeScience'>
                             Przedmioty ścisłe
                         </label>
                     </div>
@@ -240,9 +243,15 @@
                         <div class="col-12 canvas-div">
                             <canvas id="myChart21"></canvas>
                         </div>
-                        <canvas id="myChart22"></canvas>
-                        <canvas id="myChart23"></canvas>
-                        <canvas id="myChart24"></canvas>
+                        <div class="col-6 canvas-div">
+                            <canvas id="myChart22"></canvas>
+                        </div>
+                        <div class="col-6 canvas-div">
+                            <canvas id="myChart23"></canvas>
+                        </div>
+                        <div class="col-12 canvas-div">
+                            <canvas id="myChart24"></canvas>
+                        </div>
                     </div>
                 </div>
             </secton>
