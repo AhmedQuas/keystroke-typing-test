@@ -368,12 +368,20 @@ function age_chart(label, amount){
    }]
  },
  options:{
-  scales: {
+    scales: {
         yAxes: [{
             ticks: {
-                beginAtZero: true
+                beginAtZero: true,
+                 },
+        scaleLabel: {
+              display: true,
+              labelString: 'Ilość uczestników'
             }
-        }]
+        },],
+        xAxes: [{scaleLabel: {
+          display: true,
+          labelString: 'Wiek'
+        }}]
     
 },
    title:{
@@ -467,7 +475,7 @@ function asit_chart(label, amount){
    ,
 
    datasets:[{
-     label: 'Średni czas znaku [ms]',
+     label: 'Średni czas znaku',
      data:
      amount
      ,
@@ -485,16 +493,25 @@ function asit_chart(label, amount){
  },
  options:{
   scales: {
-        yAxes: [{
-            ticks: {
-                beginAtZero: true
-            }
-        }]
-    
+      yAxes: [{
+          
+          ticks: {
+            beginAtZero: true
+          },
+      scaleLabel: {
+            display: true,
+            labelString: 'Ilość uczestników'
+          }
+      },],
+      xAxes: [{scaleLabel: {
+        display: true,
+        labelString: 'Średni czas znaku [ms]'
+      }}]
+  
 },
    title:{
      display:true,
-     text:'Średni czas znaku',
+     text:'Średni czas znaku (ASIT)',
      fontSize:25
    },
    legend:{
@@ -546,16 +563,25 @@ function ec_chart(label, amount){
  },
  options:{
   scales: {
-        yAxes: [{
-            ticks: {
-                beginAtZero: true
-            }
-        }]
+      yAxes: [{
+          ticks: {
+              beginAtZero: true,
+              
+          },
+      scaleLabel: {
+            display: true,
+            labelString: 'Ilość uczestników'
+          }
+      },],
+      xAxes: [{scaleLabel: {
+        display: true,
+        labelString: 'Poprawione błędy'
+      }}]
     
 },
    title:{
      display:true,
-     text:'Poprawione błędy',
+     text:'Poprawione błędy (EC)',
      fontSize:25
    },
    legend:{
@@ -607,16 +633,25 @@ function enc_chart(label, amount){
  },
  options:{
   scales: {
-        yAxes: [{
-            ticks: {
-                beginAtZero: true
-            }
-        }]
+      yAxes: [{
+          ticks: {
+              beginAtZero: true,
+              
+          },
+      scaleLabel: {
+            display: true,
+            labelString: 'Ilość uczestników'
+          }
+      },],
+      xAxes: [{scaleLabel: {
+        display: true,
+        labelString: 'Niepoprawione błędy'
+      }}]
     
 },
    title:{
      display:true,
-     text:'Niepoprawione błędy',
+     text:'Niepoprawione błędy (ENC)',
      fontSize:25
    },
    legend:{
@@ -704,7 +739,7 @@ function science_human_asit_chart(science, human){
    ],
 
    datasets:[{
-     label:'Średnia prędkość znaku',
+     label:'Średni czas znaku',
      data:[
       science,
       human
@@ -719,14 +754,27 @@ function science_human_asit_chart(science, human){
      hoverBorderColor:'#000'
    }]
  },
+ 
  options:{
+  scales: {
+      yAxes: [{
+          ticks: {
+              beginAtZero: true,
+              },
+      scaleLabel: {
+            display: true,
+            labelString: 'Średni czas znaku [ms]'
+          }
+      },]
+    
+},
    title:{
      display:true,
-     text:'Średnia prędkość znaku a ukierunkowanie',
+     text:'Średni czas znaku (ASIT) a ukierunkowanie',
      fontSize:25
    },
    legend:{
-     display:true,
+     display:false,
      position:'right',
      labels:{
        fontColor:'#000'
@@ -757,7 +805,7 @@ function hand_asit_chart(right, left){
    ],
 
    datasets:[{
-     label:'Średnia prędkość znaku',
+     label:'Średni czas znaku',
      data:[
       right,
       left
@@ -773,13 +821,25 @@ function hand_asit_chart(right, left){
    }]
  },
  options:{
+  scales: {
+      yAxes: [{
+          ticks: {
+              beginAtZero: true,
+              },
+      scaleLabel: {
+            display: true,
+            labelString: 'Średni czas znaku [ms]'
+          }
+      },]
+    
+},
    title:{
      display:true,
-     text:'Średnia prędkość znaku a ręka wiodąca',
+     text:'Średni czas znaku (ASIT) a ręka wiodąca',
      fontSize:25
    },
    legend:{
-     display:true,
+     display:false,
      position:'right',
      labels:{
        fontColor:'#000'
@@ -827,16 +887,25 @@ function age_vs_enc_chart(label, amount){
  },
  options:{
   scales: {
-        yAxes: [{
-            ticks: {
-                beginAtZero: true
-            }
-        }]
+      yAxes: [{
+          ticks: {
+              beginAtZero: true
+              
+          },
+      scaleLabel: {
+            display: true,
+            labelString: 'Ilość poprawionych błędów'
+          }
+      },],
+      xAxes: [{scaleLabel: {
+        display: true,
+        labelString: 'Wiek'
+      }}]
     
 },
    title:{
      display:true,
-     text:'Ilość poprawionych błędów a wiek',
+     text:'Ilość poprawionych błędów (EC) a wiek',
      fontSize:25
    },
    legend:{
@@ -863,14 +932,14 @@ function age_vs_enc_chart(label, amount){
 function age_vs_asit_chart(label, amount){
   let myChart16 = document.getElementById('myChart16').getContext('2d');
    let AsitChart = new Chart(myChart16, {
- type:'horizontalBar', //doughnut
+ type:'bar', //doughnut
  data:{
    labels:
   label
    ,
 
    datasets:[{
-     label: 'Średni czas znaku [ms]',
+     label: 'Średni czas znaku',
      data:
      amount
      ,
@@ -887,10 +956,27 @@ function age_vs_asit_chart(label, amount){
      hoverBorderColor:'#000'
    }]
  },
-    options:{
+ options:{
+  scales: {
+      yAxes: [{
+          ticks: {
+              beginAtZero: false,
+              
+          },
+      scaleLabel: {
+            display: true,
+            labelString: 'Średni czas znaku [ms]'
+          }
+      },],
+      xAxes: [{scaleLabel: {
+        display: true,
+        labelString: 'Wiek'
+      }}]
+    
+},
    title:{
      display:true,
-     text:'Średni czas znaku a wiek',
+     text:'Średni czas znaku (ASIT) a wiek',
      fontSize:25
    },
    legend:{
@@ -917,7 +1003,7 @@ function age_vs_asit_chart(label, amount){
 function lang_enc_chart(polish, notpolish){
   let myChart17 = document.getElementById('myChart17').getContext('2d');
    let CapsChart = new Chart(myChart17, {
- type:'horizontalBar', //doughnut
+ type:'bar', //doughnut
  data:{
    labels:[
    'Polski',
@@ -941,13 +1027,25 @@ function lang_enc_chart(polish, notpolish){
    }]
  },
  options:{
+  scales: {
+      yAxes: [{
+          ticks: {
+              beginAtZero: true
+          },
+      scaleLabel: {
+            display: true,
+            labelString: 'Niepoprawione błędy'
+          }
+      },]
+    
+},
    title:{
      display:true,
-     text:'Wpływ języka ojczystego na ilość niepoprawionych błędów',
+     text:'Wpływ języka ojczystego na ilość niepoprawionych błędów (ENC)',
      fontSize:25
    },
    legend:{
-     display:true,
+     display:false,
      position:'right',
      labels:{
        fontColor:'#000'
@@ -993,6 +1091,7 @@ function lang_ec_chart(polish, notpolish){
      hoverBorderColor:'#000'
    }]
  },
+ 
  options:{
    title:{
      display:true,
@@ -1110,7 +1209,7 @@ function long_lostalt_invalidcase_other_chart(lostAlt, longAlt, invalidCase, oth
  options:{
    title:{
      display:true,
-     text:'Spooby zamiany znaków wśród uczestników',
+     text:'Sposoby zamiany znaków wśród uczestników',
      fontSize:25
    },
    legend:{
@@ -1148,7 +1247,7 @@ function education_asit_chart(primary, high, student, graduate, undergraduate){
    ],
 
    datasets:[{
-     label:'Średni czas znaku',
+     label:'Średni czas znaku [ms]',
      data:[
       primary, 
       high, 
@@ -1170,13 +1269,28 @@ function education_asit_chart(primary, high, student, graduate, undergraduate){
    }]
  },
  options:{
+  scales: {
+      yAxes: [{
+          ticks: {
+              beginAtZero: true,
+              },
+      scaleLabel: {
+            display: true            
+          }
+      },],
+      xAxes: [{scaleLabel: {
+        display: true,
+        labelString: 'Średni czas znaku'
+      }}]
+    
+},
    title:{
      display:true,
      text:'Średni czas znaku a wykształcenie uczestników',
      fontSize:25
    },
    legend:{
-     display:true,
+     display:false,
      position:'right',
      labels:{
        fontColor:'#000'
