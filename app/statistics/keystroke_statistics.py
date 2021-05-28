@@ -1,3 +1,4 @@
+from sqlalchemy.util.langhelpers import NoneType
 from app.statistics.survey_statistics import likeScience
 from sqlalchemy.orm import Session
 from sqlalchemy import func
@@ -159,9 +160,19 @@ def lang_enc(db: Session):
 
     not_polish = db.query(func.avg(keystroke.enc)).filter(keystroke.user_id == survey.id).filter(survey.isPolishNative == m_isPolishNative['no']).first()
 
+    if type(polish[0]) == NoneType:
+        polish_ans = 0
+    else:
+        polish_ans = round(polish[0],1)
+    
+    if type(not_polish[0]) == NoneType:
+        not_polish_ans = 0
+    else:
+        not_polish_ans = round(not_polish[0],1)
+
     return{
-        'polish': round(polish[0], 1),
-        'not_polish': round(not_polish[0], 1)
+        'polish': polish_ans,
+        'not_polish': not_polish_ans
     }
 
 def lang_ec(db: Session):
@@ -173,9 +184,19 @@ def lang_ec(db: Session):
 
     not_polish = db.query(func.avg(keystroke.ec)).filter(keystroke.user_id == survey.id).filter(survey.isPolishNative == m_isPolishNative['no']).first()
 
+    if type(polish[0]) == NoneType:
+        polish_ans = 0
+    else:
+        polish_ans = round(polish[0],1)
+    
+    if type(not_polish[0]) == NoneType:
+        not_polish_ans = 0
+    else:
+        not_polish_ans = round(not_polish[0],1)
+
     return{
-        'polish': round(polish[0], 1),
-        'not_polish': round(not_polish[0], 1)
+        'polish': polish_ans,
+        'not_polish': not_polish_ans
     }
 
 def so_sa_sch(db: Session):
@@ -188,6 +209,13 @@ def so_sa_sch(db: Session):
 
     total = sa + so + sch
 
+    if total == 0:
+        return{
+            'sa': 0,
+            'so': 0,
+            'sch': 0    
+        }
+    
     sa_ratio = round(sa/total, 1)
     sch_ratio = round(sch/total, 1)
 
@@ -207,6 +235,14 @@ def long_lostalt_invalidcase_other(db: Session):
 
     sch = db.query(func.sum(models.keystroke_statistic.sch)).first()[0]
 
+    if sch == 0:
+        return{
+            'lostAlt': 0,
+            'longAlt': 0,
+            'invalidCase': 0,
+            'other': 0
+        }
+    
     lostAlt_ratio = round(lostAlt/sch, 1)
     longAlt_ratio = round(longAlt/sch, 1)
     invalidCase_ratio = round(invalidCase/sch, 1)
