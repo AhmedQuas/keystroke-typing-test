@@ -1310,3 +1310,215 @@ function education_asit_chart(primary, high, student, graduate, undergraduate){
  }
 });
 }
+function rollover_asit_chart(label, amount){
+  let myChart22 = document.getElementById('myChart22').getContext('2d');
+   let AsitrollChart = new Chart(myChart22, {
+ type:'bar', //doughnut
+ data:{
+   labels:
+  label
+   ,
+
+   datasets:[{
+     label: 'Średni czas znaku',
+     data:
+     amount
+     ,
+     backgroundColor:[
+      'rgba(77, 10, 167, 0.6)',
+      'rgba(201, 60, 30, 0.6)',
+      'rgba(2, 113, 15, 0.6)'
+     
+     ],
+     fill: false,
+     borderColor: 'rgb(75, 192, 192)',
+     tension: 0.1,
+     hoverBorderWidth:3,
+     hoverBorderColor:'#000'
+   }]
+ },
+ options:{
+  scales: {
+      yAxes: [{
+          ticks: {
+              beginAtZero: false,
+              
+          },
+      scaleLabel: {
+            display: true,
+            labelString: 'Średni czas znaku [ms]'
+          }
+      },],
+      xAxes: [{scaleLabel: {
+        display: true,
+        labelString: 'Rollover'
+      }}]
+    
+},
+   title:{
+     display:true,
+     text:'Średni czas znaku (ASIT) a rollover',
+     fontSize:25
+   },
+   legend:{
+     display:false,
+     position:'right',
+     labels:{
+       fontColor:'#000'
+     }
+   },
+   layout:{
+     padding:{
+       left:50,
+       right:0,
+       bottom:0,
+       top:0
+     }
+   },
+   tooltips:{
+     enabled:true
+   }
+ }
+});
+}
+function rollover_atst_chart(label, amount){
+  let myChart23 = document.getElementById('myChart23').getContext('2d');
+   let AtstrollChart = new Chart(myChart23, {
+ type:'bar', //doughnut
+ data:{
+   labels:
+  label
+   ,
+
+   datasets:[{
+     label: 'Średni czas pomiędzy znakami',
+     data:
+     amount
+     ,
+     backgroundColor:[
+      'rgba(17, 100, 167, 0.6)',
+      'rgba(241, 12, 231, 0.66)',
+      'rgba(250, 13, 15, 0.6)'
+     
+     ],
+     fill: false,
+     borderColor: 'rgb(75, 192, 192)',
+     tension: 0.1,
+     hoverBorderWidth:3,
+     hoverBorderColor:'#000'
+   }]
+ },
+ options:{
+  scales: {
+      yAxes: [{
+          ticks: {
+              beginAtZero: false,
+              
+          },
+      scaleLabel: {
+            display: true,
+            labelString: 'Średni czas pomiędzy znakami [ms]'
+          }
+      },],
+      xAxes: [{scaleLabel: {
+        display: true,
+        labelString: 'Rollover'
+      }}]
+    
+},
+   title:{
+     display:true,
+     text:'Średni czas pomiędzy znakami (ATST) a rollover',
+     fontSize:25
+   },
+   legend:{
+     display:false,
+     position:'right',
+     labels:{
+       fontColor:'#000'
+     }
+   },
+   layout:{
+     padding:{
+       left:50,
+       right:0,
+       bottom:0,
+       top:0
+     }
+   },
+   tooltips:{
+     enabled:true
+   }
+ }
+});
+}
+function asit_chart(label, amount){
+  let myChart24 = document.getElementById('myChart24').getContext('2d');
+   let AtstChart = new Chart(myChart24, {
+ type:'bar', //doughnut
+ data:{
+   labels:
+  label
+   ,
+
+   datasets:[{
+     label: 'Średni czas pomiędzy znakami',
+     data:
+     amount
+     ,
+     backgroundColor:[
+      'rgba(150, 12, 241, 0.66)',
+      'rgba(12, 236, 241, 0.66)',
+      'rgba(174, 241, 12, 0.66)'
+     
+     ],
+     borderWidth:1,
+     borderColor:'#777',
+     hoverBorderWidth:3,
+     hoverBorderColor:'#000'
+   }]
+ },
+ options:{
+  scales: {
+      yAxes: [{
+          
+          ticks: {
+            beginAtZero: true
+          },
+      scaleLabel: {
+            display: true,
+            labelString: 'Ilość uczestników'
+          }
+      },],
+      xAxes: [{scaleLabel: {
+        display: true,
+        labelString: 'Średni czas pomiędzy znakami [ms]'
+      }}]
+  
+},
+   title:{
+     display:true,
+     text:'Średni czas pomiędzy znakami (ATST)',
+     fontSize:25
+   },
+   legend:{
+     display:false,
+     position:'right',
+     labels:{
+       fontColor:'#000'
+     }
+   },
+   layout:{
+     padding:{
+       left:50,
+       right:0,
+       bottom:0,
+       top:0
+     }
+   },
+   tooltips:{
+     enabled:true
+   }
+ }
+});
+}

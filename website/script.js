@@ -290,6 +290,19 @@ async function makeStatistics(){
         statistics['education_vs_asit']['graduate'],
         statistics['education_vs_asit']['undergraduate']); 
 
+    rollover_asit_chart(
+        statistics['rollover_vs_asit']['label'],
+        statistics['rollover_vs_asit']['amount']);
+
+    rollover_atst_chart(
+        statistics['rollover_vs_atst']['label'],
+        statistics['rollover_vs_atst']['amount']);
+
+    atst_chart(
+        statistics['atst_chart']['label'],
+        statistics['atst_chart']['amount']);
+
+
     }
     catch{
         console.error('Error occured during getting data from /statistics');
