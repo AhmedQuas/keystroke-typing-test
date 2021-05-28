@@ -696,7 +696,7 @@ function caps_usage_chart(caps, shift){
 function science_human_asit_chart(science, human){
   let myChart13 = document.getElementById('myChart13').getContext('2d');
    let CapsChart = new Chart(myChart13, {
- type:'pie', //doughnut
+ type:'bar', //doughnut
  data:{
    labels:[
    'Ścisłowcy',
@@ -749,7 +749,7 @@ function science_human_asit_chart(science, human){
 function hand_asit_chart(right, left){
   let myChart14 = document.getElementById('myChart14').getContext('2d');
    let CapsChart = new Chart(myChart14, {
- type:'pie', //doughnut
+ type:'bar', //doughnut
  data:{
    labels:[
    'Praworęczni',
@@ -863,7 +863,7 @@ function age_vs_enc_chart(label, amount){
 function age_vs_asit_chart(label, amount){
   let myChart16 = document.getElementById('myChart16').getContext('2d');
    let AsitChart = new Chart(myChart16, {
- type:'line', //doughnut
+ type:'horizontalBar', //doughnut
  data:{
    labels:
   label
@@ -917,7 +917,7 @@ function age_vs_asit_chart(label, amount){
 function lang_enc_chart(polish, notpolish){
   let myChart17 = document.getElementById('myChart17').getContext('2d');
    let CapsChart = new Chart(myChart17, {
- type:'pie', //doughnut
+ type:'horizontalBar', //doughnut
  data:{
    labels:[
    'Polski',
@@ -1137,7 +1137,7 @@ function long_lostalt_invalidcase_other_chart(lostAlt, longAlt, invalidCase, oth
 function education_asit_chart(primary, high, student, graduate, undergraduate){
   let myChart21 = document.getElementById('myChart21').getContext('2d');
    let CapsChart = new Chart(myChart21, {
- type:'doughnut',
+ type:'horizontalBar',
  data:{
    labels:[
     'Uczeń szkoły podstawowej',
