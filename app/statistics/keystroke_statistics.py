@@ -129,7 +129,13 @@ def vs_plot(x_axis, y_axis, db: Session):
     while val <= Xmax:
         val += h
         response['label'].append(str(val-h) + ' - ' + str(val))
-        amount = round(db.query(func.avg(y_axis)).filter(keystroke.user_id == survey.id).filter(x_axis.between(val-h,val)).first()[0],1)
+        amount = db.query(func.avg(y_axis)).filter(keystroke.user_id == survey.id).filter(x_axis.between(val-h,val)).first()[0]
+
+        if type(amount) == NoneType:
+            amount = 0
+        else:
+            amount = round(amount,1)
+
         response['amount'].append(amount)
         val += 1
 
