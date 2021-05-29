@@ -97,8 +97,7 @@ function nextButtonClick(e){
         
         // Send survey, test data, end test & show statistics
         sendData();
-        getStatistics();
-        alert('Test finished');
+        alert('Badanie zakończone, proszę wcisnąć OK i poczekać chwilę na prezentację wyników');
     }
     else{
         // Provide next sentence
@@ -182,6 +181,42 @@ async function sendData(){
         }
     
         statistics = data;
+        
+        li_rollover = document.getElementById('rollover')
+        li_asit = document.getElementById('asit')
+        li_atst = document.getElementById('atst')
+        li_ec = document.getElementById('ec')
+        li_enc = document.getElementById('enc')
+        li_so = document.getElementById('so')
+        li_sa = document.getElementById('sa')
+        li_sch = document.getElementById('sch')
+        li_lostAlt = document.getElementById('lostAlt')
+        li_longAlt = document.getElementById('longAlt')
+        li_invalidCase = document.getElementById('invalidCase')
+        li_capsLockUsage = document.getElementById('capsLockUsage')
+
+        li_rollover.innerHTML = statistics['interviewee']['rollover']
+        li_asit.innerHTML = statistics['interviewee']['asit']
+        li_atst.innerHTML = statistics['interviewee']['atst']
+        li_ec.innerHTML = statistics['interviewee']['ec']
+        li_enc.innerHTML = statistics['interviewee']['enc']
+        li_so.innerHTML = statistics['interviewee']['sch']
+        li_sa.innerHTML = statistics['interviewee']['so']
+        li_sch.innerHTML = statistics['interviewee']['sa']
+        li_lostAlt.innerHTML = statistics['interviewee']['longAlt']
+        li_longAlt.innerHTML = statistics['interviewee']['lostAlt']
+        li_invalidCase.innerHTML = statistics['interviewee']['invalidCase']
+
+        d_capsLockUsage = statistics['interviewee']['capsLockUsage']
+
+        if (d_capsLockUsage){
+            d_capsLockUsage = 'Przynajmniej raz naciśnięto przycisk CapsLock';
+        }
+        else{
+            d_capsLockUsage = 'Wszyskie duże znaki pisano bez wykorzystania przycisku CapsLock';
+        }
+
+        li_capsLockUsage.innerHTML = d_capsLockUsage
 
      hand_pie( 
         statistics['hand_preferences']['right_hand'],
@@ -301,7 +336,6 @@ function setResponseUserInputWidth(){
 
 function validate_data(correctSentence, userSentence){
 
-    console.log('validate_data')
     correctWords = correctSentence.split(" ");
     userWords = userSentence.split(" ");
 

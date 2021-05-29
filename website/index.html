@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset='UTF-8' />
+    <title>Czy 'widać' Cię przez klawiaturę?</title>
     <link rel="icon" type="image/png" href="img/icon.png"/>
     <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous'>
     <link rel='stylesheet' href='style.css'>
@@ -177,7 +178,45 @@
                 <button id='next-button' type='submit' class='btn btn-primary float-right'>Następne</button>
             </secton>
             <secton id='stats-section' class='col-12 text-center test-statistics d-none space'>
-                <p>Statystyki dotyczące testu</p>
+                <div class='text-left'>
+                    <p>Bardzo dziękujemy za udział w badaniu, poniżej przedstawiamy krótką legendę i garść statystyk:</p>
+                    <p>
+                        Rollover - Jest to nakładanie się na siebie kliknięć na klawiaturze, czyli w momencie gdy szybko piszemy i wciskamy drugi przycisk, nie puściliśmy jeszcze pierwszego. Oznacza to, że ich czasy się na siebie nakładają.
+                    </p>
+                    <p>
+                        Średni czas znaku - Jest to średnia czasu, który poświęcamy na naciśnięcie przycisku. 
+                    </p>
+                    <p>
+                        Średni czas przerwy między znakami - Jest to średnia czasu, który znajduje się pomiędzy puszczeniem jednego klawisza, a wciśnięciem następnego. 
+                    </p>
+                    <p>
+                        Podczas pisania nieraz popełnia się błędy, dlatego badamy, jakiego rodzaju błędy są popełniane oraz czy je poprawiamy. Przycisk alt służy do tworzenia znaków polskich, czasem je pomijamy, a czasem, przytrzymujemy alt zbyt długo, przez co wychodzą takie piękności jak “wykłąd”.
+                    </p>
+                    <p>
+                        Ukierunkowanie - czyli jakie zainteresowania ma badana osoba, jest humanistą? Czy może ścisłowcem?
+                    </p>
+                </div>
+                <div class='text-left'>
+                    <p>Statystyki dotyczące testu</p>
+                    <ul>
+                        <li>Ilość rollover'ów: <span id='rollover'></span></li>
+                        <li>Średni czas znaku: <span id='asit'></span> ms</li>
+                        <li>Średni czas przerwy między znakami: <span id='atst'></span> ms</li>
+                        <li>Poprawione błędy: <span id='ec'></span></li>
+                        <li>Niepoprawione błędy: <span id='enc'></span></li>
+                        <li id='capsLockUsage'></li>
+                        <li>Znaki pominięte: <span id='so'></span></li>
+                        <li>Znaki dodane: <span id='sa'></span></li>
+                        <li>Zamienione <span id='sch'></span> znaki, w tym:
+                            <ul>
+                                <li>Zgubiony Alt: <span id='lostAlt'></span></li>
+                                <li>Przetrzymany Alt: <span id='longAlt'></span></li>
+                                <li>Niepoprawna wielkośc liter: <span id='invalidCase'></span></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
                 <div class="container">
                     <div class='row'>
                         <div class="col-6 canvas-div">
@@ -257,6 +296,7 @@
             </secton>
         </article>
     </main>
+    <footer></footer>
     <script src='script_charts.js'></script>
     <script src='levenshtein.js'></script>
     <script src='script.js'></script>
